@@ -360,10 +360,24 @@ snode* new_node() {
     return state;
 }
 
+void write_solution_to_file(unsigned solution_index, unsigned g1, unsigned g2) {
+    char filename[256];
+    snprintf(filename, sizeof(filename), "solution_%u.txt", solution_index);
+
+    FILE* solution_file = fopen(filename, "w");
+    if (solution_file == NULL) {
+        printf("Error al abrir el archivo %s.\n", filename);
+        exit(EXIT_FAILURE);
+    }
+
+    fprintf(solution_file, "Solución #%u\n", solution_index);
+    fprintf(solution_file, "Costo G1: %u\n", g1);
+    fprintf(solution_file, "Costo G2: %u\n", g2);
+
+    fclose(solution_file);
+}
+
 int boastar() {
-	FILE* f;
-	f = fopen("salida344.csv", "w");
-	
     snode* recycled_nodes[MAX_RECYCLE];
     int next_recycled = 0;
     nsolutions = 0;
@@ -381,7 +395,7 @@ int boastar() {
 
     stat_expansions = 0;
     while (topheap() != NULL) {
-        snode* n = popheap(); //best node in open
+        snode* n = popheap();
         short d;
 
         if (n->g2 >= graph_node[n->state].gmin || n->g2 + graph_node[n->state].h2 >= minf_solution) {
@@ -394,15 +408,15 @@ int boastar() {
 
         graph_node[n->state].gmin = n->g2;
 
-
         if (n->state == goal) {
-            printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n", n->g1, n->g2, nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
-            //fprintf(f,"%d;%d\n",n->g1, n->g2); 
-			//getchar();
-            
-			solutions[nsolutions][0] = n->g1;
+            printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n",
+                   n->g1, n->g2, nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
+
+            solutions[nsolutions][0] = n->g1;
             solutions[nsolutions][1] = n->g2;
+            write_solution_to_file(nsolutions, n->g1, n->g2); // Crear archivo .txt
             nsolutions++;
+
             if (nsolutions > MAX_SOLUTIONS) {
                 printf("Maximum number of solutions reached, increase MAX_SOLUTIONS!\n");
                 exit(1);
@@ -429,18 +443,12 @@ int boastar() {
             if (newg2 >= graph_node[nsucc].gmin || newg2 + h2 >= minf_solution)
                 continue;
 
-			//if (nsucc == 153532-1 || nsucc == 108746-1)	
-				//printf("No se poda %d in %d expasion (%d,%d)\n",nsucc+1,stat_expansions,newg1+h1,newg2+h2);
-
-
-
             newk1 = newg1 + h1;
             newk2 = newg2 + h2;
 
-            if (next_recycled > 0) { //to reuse pruned nodes in memory
+            if (next_recycled > 0) {
                 succ = recycled_nodes[--next_recycled];
-            }
-            else {
+            } else {
                 succ = new_node();
                 ++stat_created;
             }
@@ -457,7 +465,7 @@ int boastar() {
         }
     }
 
-   // return nsolutions > 0;
+    return nsolutions > 0;
 }
 
 /* ------------------------------------------------------------------------------*/
@@ -482,7 +490,7 @@ void call_boastar(const char* output_filename) {
     // Llama a BOA*
     boastar();
 
-    gettimeofday(&tend, NULL);k
+    gettimeofday(&tend, NULL);
     runtime = 1.0 * (tend.tv_sec - tstart.tv_sec) + 1.0 * (tend.tv_usec - tstart.tv_usec) / 1000000.0;
 
     // Imprime resultados en el formato solicitado
@@ -500,13 +508,25 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    start = 180833;  // Asumiendo que estos valores son correctos para NYC
-    goal = 83149;
+    read_adjacent_table(argv[1]);
+    new_graph();
 
-    read_adjacent_table(argv[1]);  // Lee el archivo de entrada
-    new_graph();                  // Inicializa los datos del grafo
+    unsigned start_points[] = {180833, 100000, 150000}; // Ejemplo de múltiples inicios
+    unsigned goal_points[] = {83149, 90000, 160000};   // Ejemplo de múltiples metas
+    unsigned i, j; // Declarar fuera del bucle
 
-    call_boastar(argv[2]);        // Llama al algoritmo BOA* y escribe en el archivo de salida
+    for (i = 0; i < sizeof(start_points) / sizeof(start_points[0]); i++) {
+        for (j = 0; j < sizeof(goal_points) / sizeof(goal_points[0]); j++) {
+            start = start_points[i];
+            goal = goal_points[j];
+            printf("Resolviendo de %u a %u\n", start, goal);
+
+            call_boastar(argv[2]);
+        }
+    }
+
+    return 0;
 }
+
 
 
