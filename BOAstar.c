@@ -504,44 +504,6 @@ void call_boastar(const char* output_filename) {
 
 
 /*----------------------------------------------------------------------------------*/
-int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        printf("Uso: %s <NY-road-d.txt> <salida344.csv>\n", argv[0]);
-        return 1;
-    }
-
-    read_adjacent_table(argv[1]);
-    new_graph();
-
-    unsigned start_points[] = {180833, 100000, 150000}; // Ejemplo de múltiples inicios
-    unsigned goal_points[] = {83149, 90000, 160000};   // Ejemplo de múltiples metas
-    unsigned i, j; // Declarar fuera del bucle
-
-    // Tamaños de los arreglos
-    unsigned start_count = sizeof(start_points) / sizeof(start_points[0]);
-    unsigned goal_count = sizeof(goal_points) / sizeof(goal_points[0]);
-
-    for (i = 0; i < start_count; i++) {
-        printf("Iterando por start_points[%u] = %u\n", i, start_points[i]);
-        for (j = 0; j < goal_count; j++) {
-            printf("Iterando por goal_points[%u] = %u\n", j, goal_points[j]);
-
-            // Configuración de inicio y meta
-            start = start_points[i];
-            goal = goal_points[j];
-
-            // Mostrar información de inicio y meta
-            printf("Resolviendo de %u a %u\n", start, goal);
-
-            // Llamada al algoritmo
-            call_boastar(argv[2]);
-        }
-    }
-
-    return 0;
-<<<<<<< Updated upstream
-=======
-}*/
 
 void read_routes(const char* filename, unsigned** start_points, unsigned** goal_points, unsigned* num_routes) {
     FILE* file = fopen(filename, "r");
@@ -618,7 +580,7 @@ int main(int argc, char* argv[]) {
     }
 
     return 0;
->>>>>>> Stashed changes
+
 }
 
 
