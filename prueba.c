@@ -5,8 +5,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/time.h>
-#include <unistd.h>
+#include <time.h>
+#include <sys/time.h> // Added to define struct timeval
+// #include <unistd.h> // Removed as it is not necessary for this code
 
 #define MAXNODES 4000000
 #define MAXNEIGH 45
@@ -38,10 +39,15 @@ typedef struct snode snode;
 
 struct snode // BOA*'s search nodes
 {
+  int cost; // Costo acumulado
+  int stops; // Número de paradas
+  struct snode* prev; // Nodo anterior en la ruta
+  // Otros campos necesarios
   int state;
   unsigned g1;
   unsigned g2;
   double key;
+
   unsigned long heapindex;
   snode *searchtree;
 };
@@ -276,10 +282,10 @@ void read_adjacent_table(const char* filename) {
 	int i, ori, dest, dist, t;
 	f = fopen(filename, "r");
 	int num_arcs = 0;
-    if (f == NULL) {
-        fprintf(stderr, "Error: No se puede abrir el archivo %s.\n", filename);
-        exit(EXIT_FAILURE);
-    }
+	if (f == NULL) 	{
+		printf("Cannot open file %s.\n", filename);
+		exit(1);
+	}
 	fscanf(f, "%d %d", &num_gnodes, &num_arcs);
 	fscanf(f, "\n");
 //	printf("%d %d", num_gnodes, num_arcs);
@@ -360,24 +366,10 @@ snode* new_node() {
     return state;
 }
 
-void write_solution_to_file(unsigned solution_index, unsigned g1, unsigned g2) {
-    char filename[256];
-    snprintf(filename, sizeof(filename), "solution_%u.txt", solution_index);
-
-    FILE* solution_file = fopen(filename, "w");
-    if (solution_file == NULL) {
-        printf("Error al abrir el archivo %s.\n", filename);
-        exit(EXIT_FAILURE);
-    }
-
-    fprintf(solution_file, "Solución #%u\n", solution_index);
-    fprintf(solution_file, "Costo G1: %u\n", g1);
-    fprintf(solution_file, "Costo G2: %u\n", g2);
-
-    fclose(solution_file);
-}
-
 int boastar() {
+	FILE* f;
+	f = fopen("salida344.csv", "w");
+	
     snode* recycled_nodes[MAX_RECYCLE];
     int next_recycled = 0;
     nsolutions = 0;
@@ -395,7 +387,7 @@ int boastar() {
 
     stat_expansions = 0;
     while (topheap() != NULL) {
-        snode* n = popheap();
+        snode* n = popheap(); //best node in open
         short d;
 
         if (n->g2 >= graph_node[n->state].gmin || n->g2 + graph_node[n->state].h2 >= minf_solution) {
@@ -408,15 +400,15 @@ int boastar() {
 
         graph_node[n->state].gmin = n->g2;
 
+
         if (n->state == goal) {
-            printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n",
-                   n->g1, n->g2, nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
-
-            solutions[nsolutions][0] = n->g1;
+            printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n", n->g1, n->g2, nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
+            //fprintf(f,"%d;%d\n",n->g1, n->g2); 
+			//getchar();
+            
+			solutions[nsolutions][0] = n->g1;
             solutions[nsolutions][1] = n->g2;
-            write_solution_to_file(nsolutions, n->g1, n->g2); // Crear archivo .txt
             nsolutions++;
-
             if (nsolutions > MAX_SOLUTIONS) {
                 printf("Maximum number of solutions reached, increase MAX_SOLUTIONS!\n");
                 exit(1);
@@ -443,12 +435,18 @@ int boastar() {
             if (newg2 >= graph_node[nsucc].gmin || newg2 + h2 >= minf_solution)
                 continue;
 
+			//if (nsucc == 153532-1 || nsucc == 108746-1)	
+				//printf("No se poda %d in %d expasion (%d,%d)\n",nsucc+1,stat_expansions,newg1+h1,newg2+h2);
+
+
+
             newk1 = newg1 + h1;
             newk2 = newg2 + h2;
 
-            if (next_recycled > 0) {
+            if (next_recycled > 0) { //to reuse pruned nodes in memory
                 succ = recycled_nodes[--next_recycled];
-            } else {
+            }
+            else {
                 succ = new_node();
                 ++stat_created;
             }
@@ -465,79 +463,138 @@ int boastar() {
         }
     }
 
-    return nsolutions > 0;
+   // return nsolutions > 0;
 }
 
 /* ------------------------------------------------------------------------------*/
-void call_boastar(const char* output_filename) {
-    FILE* output_file = fopen(output_filename, "w");
-    if (output_file == NULL) {
-        printf("Error al abrir el archivo de salida %s.\n", output_filename);
-        exit(EXIT_FAILURE);
-    }
-
+void call_boastar() {
     float runtime;
     struct timeval tstart, tend;
+    unsigned long long min_cost;
+    unsigned long long min_time;
 
     initialize_parameters();
 
     gettimeofday(&tstart, NULL);
 
-    // Calcula h1 y h2 usando Dijkstra inverso
-    backward_dijkstra(1);
-    backward_dijkstra(2);
+    //Dijkstra h1
+    if (backward_dijkstra(1))
+        min_cost = start_state->h1;
 
-    // Llama a BOA*
+    //Dijkstra h2
+    if (backward_dijkstra(2))
+        min_time = start_state->h2;
+        
+    
+	//BOA*
     boastar();
 
+		
     gettimeofday(&tend, NULL);
     runtime = 1.0 * (tend.tv_sec - tstart.tv_sec) + 1.0 * (tend.tv_usec - tstart.tv_usec) / 1000000.0;
-
-    // Imprime resultados en el formato solicitado
-    fprintf(output_file, "#instancia;%d;nsoluciones;%d;runtime;%f;nodos_expandidos;%llu;nodos_generados;%llu\n",
-            1, nsolutions, runtime * 1000, stat_expansions, stat_generated);
-
-    fclose(output_file);
+    //		printf("nsolutions:%d Runtime(ms):%f Generated: %llu statexpanded1:%llu\n", nsolutions, time_astar_first1*1000, stat_generated, stat_expansions);
+    printf("%lld;%lld;%d;%f;%llu;%llu;%lu;%llu\n",
+        start_state->id + 1,
+        goal_state->id + 1,
+        nsolutions,
+        runtime * 1000,
+        stat_generated,
+        stat_expansions,
+        stat_created,
+        stat_percolations);
 }
 
+void execute_with_stops(const int stops[], int num_stops) {
+    unsigned long long total_expansions = 0, total_generated = 0;
+    float total_runtime = 0;
+    unsigned total_solutions = 0;
+
+    struct timeval tstart, tend;
+    int i;
+
+    for (i = 0; i < num_stops - 1; i++) {
+        start = stops[i];      // Nodo inicial del segmento
+        goal = stops[i + 1];   // Nodo final del segmento
+        printf("Processing segment: %d -> %d\n", start, goal);
+
+        start_state = &graph_node[start];
+        goal_state = &graph_node[goal];
+
+        gettimeofday(&tstart, NULL);
+
+        // Inicializar par?metros y ejecutar BOA* para este segmento
+        initialize_parameters();
+        if (backward_dijkstra(1) && backward_dijkstra(2)) {
+            boastar();
+        }
+
+        gettimeofday(&tend, NULL);
+
+        // Calcular tiempo de ejecuci?n para este segmento
+        float runtime = 1.0 * (tend.tv_sec - tstart.tv_sec) +
+                        1.0 * (tend.tv_usec - tstart.tv_usec) / 1000000.0;
+
+        // Acumular m?tricas globales
+        total_runtime += runtime;
+        total_expansions += stat_expansions;
+        total_generated += stat_generated;
+        total_solutions += nsolutions;
+
+        // Mostrar resultados del segmento
+        printf("Segment results: Runtime %.2f ms, Solutions %d, Expansions %llu, Generated %llu\n",
+               runtime * 1000, nsolutions, stat_expansions, stat_generated);
+    }
+
+    // Mostrar resultados consolidados
+    printf("Total Results:\n");
+    printf("Runtime: %.2f ms\n", total_runtime * 1000);
+    printf("Total Expansions: %llu\n", total_expansions);
+    printf("Total Generated: %llu\n", total_generated);
+    printf("Total Solutions: %u\n", total_solutions);
+}
 
 /*----------------------------------------------------------------------------------*/
-int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        printf("Uso: %s <NY-road-d.txt> <salida344.csv>\n", argv[0]);
-        return 1;
+void pareto_search(snode* start, snode* goal) {
+  emptyheap();
+  start->cost = 0;
+  start->stops = 0;
+  start->prev = NULL;
+  insertheap(start);
+
+  while (heapsize > 0) {
+    snode* current = popheap();
+    if (current == goal) {
+      // Ruta encontrada
+      return;
     }
 
-    read_adjacent_table(argv[1]);
+    // Explorar vecinos
+    for (int d = 1; d < adjacent_table[current->state][0] * 3; d += 3) {
+      snode* neighbor = new_node();
+      neighbor->state = adjacent_table[current->state][d];
+      int new_cost = current->cost + adjacent_table[current->state][d + 1];
+      int new_stops = current->stops + 1;
+
+      if (new_cost < neighbor->cost || new_stops < neighbor->stops) {
+        neighbor->cost = new_cost;
+        neighbor->stops = new_stops;
+        neighbor->prev = current;
+        insertheap(neighbor);
+      }
+    }
+  }
+}
+
+int main() {
+    const int stops[] = {180833, 12345, 67890, 111213, 141516, 83149};  // Lista de paradas
+    int num_stops = sizeof(stops) / sizeof(stops[0]);
+
+    // Leer el grafo desde el archivo (se mantiene sin cambios)
+    read_adjacent_table("NY-road-d.txt");
     new_graph();
 
-    unsigned start_points[] = {180833, 100000, 150000}; // Ejemplo de múltiples inicios
-    unsigned goal_points[] = {83149, 90000, 160000};   // Ejemplo de múltiples metas
-    unsigned i, j; // Declarar fuera del bucle
-
-    // Tamaños de los arreglos
-    unsigned start_count = sizeof(start_points) / sizeof(start_points[0]);
-    unsigned goal_count = sizeof(goal_points) / sizeof(goal_points[0]);
-
-    for (i = 0; i < start_count; i++) {
-        printf("Iterando por start_points[%u] = %u\n", i, start_points[i]);
-        for (j = 0; j < goal_count; j++) {
-            printf("Iterando por goal_points[%u] = %u\n", j, goal_points[j]);
-
-            // Configuración de inicio y meta
-            start = start_points[i];
-            goal = goal_points[j];
-
-            // Mostrar información de inicio y meta
-            printf("Resolviendo de %u a %u\n", start, goal);
-
-            // Llamada al algoritmo
-            call_boastar(argv[2]);
-        }
-    }
+    // Ejecutar BOA* para cada segmento entre paradas
+    execute_with_stops(stops, num_stops);
 
     return 0;
 }
-
-
-
