@@ -18,6 +18,8 @@
 
 #define max(x,y) ( (x) > (y) ? (x) : (y) )
 #define min(x,y) ( (x) < (y) ? (x) : (y) )
+#define MAX_NODES_IN_ROUTE 7 // Inicio + hasta 5 paradas + Meta
+
 
 //********************************************** Main data structures ******************************************************
 struct gnode;
@@ -537,6 +539,86 @@ int main(int argc, char* argv[]) {
     }
 
     return 0;
+<<<<<<< Updated upstream
+=======
+}*/
+
+void read_routes(const char* filename, unsigned** start_points, unsigned** goal_points, unsigned* num_routes) {
+    FILE* file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Error al abrir el archivo %s.\n", filename);
+        exit(EXIT_FAILURE);
+    }
+
+    unsigned buffer[MAX_NODES_IN_ROUTE];
+    unsigned route_count = 0;
+    unsigned i; // Declarar fuera de los bucles
+    *num_routes = 0;
+
+    while (!feof(file)) {
+        unsigned num_nodes = 0;
+
+        // Leer nodos de una línea
+        for (i = 0; i < MAX_NODES_IN_ROUTE; i++) {
+            if (fscanf(file, "%u", &buffer[i]) != 1) {
+                break;
+            }
+            num_nodes++;
+        }
+
+        if (num_nodes < 2) {
+            continue; // Ignorar rutas no válidas
+        }
+
+        // Generar pares start-goal
+        for (i = 0; i < num_nodes - 1; i++) {
+            start_points[route_count][i] = buffer[i];
+            goal_points[route_count][i] = buffer[i + 1];
+            route_count++;
+        }
+    }
+
+    fclose(file);
+    *num_routes = route_count;
+}
+
+int main(int argc, char* argv[]) {
+    if (argc != 3) {
+        printf("Uso: %s <NY-queries-1p> <archivo_salida.csv>\n", argv[0]);
+        return 1;
+    }
+
+    // Leer rutas desde el archivo
+    unsigned* start_points[MAXNODES];
+    unsigned* goal_points[MAXNODES];
+    unsigned num_routes = 0;
+    unsigned i; // Declarar fuera del bucle
+
+    for (i = 0; i < MAXNODES; i++) { // Usar 'i' ya declarada
+        start_points[i] = malloc(MAX_NODES_IN_ROUTE * sizeof(unsigned));
+        goal_points[i] = malloc(MAX_NODES_IN_ROUTE * sizeof(unsigned));
+    }
+
+    read_routes(argv[1], start_points, goal_points, &num_routes);
+
+    // Procesar cada ruta con BOA*
+    for (i = 0; i < num_routes; i++) { // Reutilizar 'i' declarada anteriormente
+        start = start_points[i][0];
+        goal = goal_points[i][0];
+        printf("Procesando ruta de %u a %u...\n", start, goal);
+        call_boastar(argv[2]);
+    }
+
+    printf("Todas las rutas han sido procesadas.\n");
+
+    // Liberar memoria
+    for (i = 0; i < MAXNODES; i++) { // Reutilizar 'i'
+        free(start_points[i]);
+        free(goal_points[i]);
+    }
+
+    return 0;
+>>>>>>> Stashed changes
 }
 
 
