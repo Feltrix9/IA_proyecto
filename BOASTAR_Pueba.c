@@ -1,4 +1,4 @@
-/////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////
 // Carlos Hernandez
 // All rights reserved
 /////////////////////////////////////////////////////////////////////
@@ -12,8 +12,9 @@
 #define MAXNEIGH 45
 #define MAX_SOLUTIONS 1000000
 #define MAX_RECYCLE   100000
-#define MAX_ROUTES 100000000 // Máximo número de rutas permitidas
 
+#define MAX_ROUTES 1000 // Máximo número de rutas permitidas
+#define MAX_SEGMENTS 3 // Segmentos por ruta (inicio ? parada_1 ? parada_2 ? final)
 
 #define LARGE  1000000000
 #define BASE   10000000
@@ -530,63 +531,93 @@ int main(int argc, char* argv[]) {
     return 0;
 }*/
 
-
-void read_and_generate_routes(const char* filename, unsigned* start_points, unsigned* goal_points, unsigned* num_pairs) {
+void read_queries(const char* filename, unsigned start[], unsigned stop1[], unsigned stop2[], unsigned goal[], unsigned* num_routes) {
     FILE* file = fopen(filename, "r");
     if (file == NULL) {
         printf("Error al abrir el archivo %s.\n", filename);
         exit(EXIT_FAILURE);
     }
-    printf("Archivo %s abierto correctamente.\n", filename);
 
-    unsigned inicio, parada, final;
-    *num_pairs = 0;
+    unsigned inicio, parada1, parada2, final;
+    *num_routes = 0;
 
-    while (fscanf(file, "%u %u %u", &inicio, &parada, &final) == 3) {
-        printf("Leyendo línea: inicio=%u, parada=%u, final=%u\n", inicio, parada, final);
+    while (fscanf(file, "%u %u %u %u", &inicio, &parada1, &parada2, &final) == 4) {
+        start[*num_routes] = inicio;
+        stop1[*num_routes] = parada1;
+        stop2[*num_routes] = parada2;
+        goal[*num_routes] = final;
+        (*num_routes)++;
 
-        start_points[*num_pairs] = inicio;
-        goal_points[*num_pairs] = parada;
-        (*num_pairs)++;
-
-        start_points[*num_pairs] = parada;
-        goal_points[*num_pairs] = final;
-        (*num_pairs)++;
-
-        if (*num_pairs >= MAX_ROUTES) {
+        if (*num_routes >= MAX_ROUTES) {
             printf("Se alcanzó el límite máximo de rutas (%d).\n", MAX_ROUTES);
             break;
         }
     }
 
     fclose(file);
-    printf("Archivo %s cerrado correctamente.\n", filename);
 }
 
 int main(int argc, char* argv[]) {
-	printf("Iniciando el programa...\n");
-    if (argc != 3) {
-        printf("Uso: %s <NY-queries-1p.txt> <salida344.csv>\n", argv[0]);
+    if (argc != 4) {
+        printf("Uso: %s <NY-road-d.txt> <NY-queries-2p.txt> <output.txt>\n", argv[0]);
         return 1;
     }
 
-    unsigned i; // Declarar la variable fuera del bucle
-    unsigned start_points[MAX_ROUTES];
-    unsigned goal_points[MAX_ROUTES];
-    unsigned num_pairs = 0;
+    // Leer el grafo desde NY-road-d.txt
+    printf("Cargando grafo desde %s...\n", argv[1]);
+    read_adjacent_table(argv[1]);
+    new_graph();
 
-    // Leer el archivo y generar las rutas
-    read_and_generate_routes(argv[1], start_points, goal_points, &num_pairs);
+    // Leer rutas desde NY-queries-2p.txt
+    printf("Cargando rutas desde %s...\n", argv[2]);
+    unsigned start[MAX_ROUTES], stop1[MAX_ROUTES], stop2[MAX_ROUTES], goal[MAX_ROUTES];
+    unsigned num_routes = 0;
 
-    // Procesar cada par de puntos con BOA*
-    for (i = 0; i < num_pairs; i++) { // Usar la variable declarada anteriormente
-        start = start_points[i];
-        goal = goal_points[i];
-        printf("Procesando ruta de %u a %u...\n", start, goal);
-        call_boastar(argv[2]);
+    read_queries(argv[2], start, stop1, stop2, goal, &num_routes);
+
+    // Abrir archivo de salida
+    FILE* output_file = fopen(argv[3], "w");
+    if (output_file == NULL) {
+        printf("Error al abrir el archivo de salida %s.\n", argv[3]);
+        return 1;
+    }
+
+    // Procesar cada ruta
+    unsigned i; // Declarar fuera del bucle
+    for (i = 0; i < num_routes; i++) {
+        unsigned current_start, current_goal;
+
+        printf("Procesando ruta #%u: %u ? %u ? %u ? %u\n", i + 1, start[i], stop1[i], stop2[i], goal[i]);
+        fprintf(output_file, "Ruta #%u: %u ? %u ? %u ? %u\n", i + 1, start[i], stop1[i], stop2[i], goal[i]);
+
+        // Segmento 1: inicio ? parada_1
+        current_start = start[i];
+        current_goal = stop1[i];
+        printf("  Segmento 1: %u ? %u\n", current_start, current_goal);
+        start_state = &graph_node[current_start]; // Asignar nodos directamente
+        goal_state = &graph_node[current_goal];
+        call_boastar(argv[3]);
+
+        // Segmento 2: parada_1 ? parada_2
+        current_start = stop1[i];
+        current_goal = stop2[i];
+        printf("  Segmento 2: %u ? %u\n", current_start, current_goal);
+        start_state = &graph_node[current_start];
+        goal_state = &graph_node[current_goal];
+        call_boastar(argv[3]);
+
+        // Segmento 3: parada_2 ? final
+        current_start = stop2[i];
+        current_goal = goal[i];
+        printf("  Segmento 3: %u ? %u\n", current_start, current_goal);
+        start_state = &graph_node[current_start];
+        goal_state = &graph_node[current_goal];
+        call_boastar(argv[3]);
     }
 
     printf("Todas las rutas han sido procesadas.\n");
+    fclose(output_file);
+
     return 0;
 }
 
