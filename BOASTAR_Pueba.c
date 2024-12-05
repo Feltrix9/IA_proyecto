@@ -400,6 +400,8 @@ int boastar() {
         snode* n = popheap();
         short d;
 
+        printf("Expandiendo nodo %u con g1=%u, g2=%u\n", n->state, n->g1, n->g2);  // Trazas de depuración
+
         if (n->g2 >= graph_node[n->state].gmin || n->g2 + graph_node[n->state].h2 >= minf_solution) {
             stat_pruned++;
             if (next_recycled < MAX_RECYCLE) {
@@ -411,9 +413,9 @@ int boastar() {
         graph_node[n->state].gmin = n->g2;
 
         if (n->state == goal) {
-            printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n",
+            printf("GOAL alcanzado: [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n",
                    n->g1, n->g2, nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
-
+            print_path(n);  // Imprimir el camino hasta la meta
             solutions[nsolutions][0] = n->g1;
             solutions[nsolutions][1] = n->g2;
             write_solution_to_file(nsolutions, n->g1, n->g2); // Crear archivo .txt
@@ -464,12 +466,24 @@ int boastar() {
             succ->g2 = newg2;
             succ->key = newkey;
             insertheap(succ);
+
+            // Agregar mensaje para verificar los nodos generados
+            printf("Generando nodo sucesor %u con g1=%u, g2=%u, h1=%u, h2=%u\n", nsucc, newg1, newg2, h1, h2);
         }
     }
 
-    return nsolutions > 0;
+    return nsolutions;
 }
 
+void print_path(snode* goal_node) {
+    snode* current = goal_node;
+    printf("Camino desde %u a %u:\n", start, goal);
+    while (current != NULL) {
+        printf("Nodo %u (g1=%u, g2=%u) -> ", current->state, current->g1, current->g2);
+        current = current->searchtree;
+    }
+    printf("Nodo %u\n", start);  // Imprimir el nodo de inicio
+}
 /* ------------------------------------------------------------------------------*/
 void call_boastar(const char* output_filename) {
     FILE* output_file = fopen(output_filename, "w");
