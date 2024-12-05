@@ -466,67 +466,115 @@ int boastar() {
 }
 
 /* ------------------------------------------------------------------------------*/
-void call_boastar(const char* output_filename) {
-    FILE* output_file = fopen(output_filename, "w");
-    if (output_file == NULL) {
-        printf("Error al abrir el archivo de salida %s.\n", output_filename);
-        exit(EXIT_FAILURE);
-    }
+void call_boastar_and_log(FILE* output_file, unsigned current_start, unsigned current_goal, int instance) {
+    printf("Ejecutando BOA* para el segmento %u -> %u\n", current_start, current_goal);
+    fprintf(output_file, "Ejecutando BOA* para el segmento %u -> %u\n", current_start, current_goal);
 
-    float runtime;
-    struct timeval tstart, tend;
+    // Configuración inicial
+    start = current_start;
+    goal = current_goal;
 
+    // Inicializar los parámetros necesarios
     initialize_parameters();
 
-    gettimeofday(&tstart, NULL);
-
-    // Calcula h1 y h2 usando Dijkstra inverso
+    // Dijkstra inverso para heurísticas
     backward_dijkstra(1);
     backward_dijkstra(2);
 
-    // Llama a BOA*
-    boastar();
-	
-	
-    gettimeofday(&tend, NULL);
-    runtime = 1.0 * (tend.tv_sec - tstart.tv_sec) + 1.0 * (tend.tv_usec - tstart.tv_usec) / 1000000.0;
+    // Ejecutar BOA*
+    if (!boastar()) {
+        printf("No se encontraron soluciones para el segmento %u -> %u\n", current_start, current_goal);
+        fprintf(output_file, "No se encontraron soluciones para el segmento %u -> %u\n", current_start, current_goal);
+    } else {
+        printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n",
+               solutions[nsolutions - 1][0], solutions[nsolutions - 1][1],
+               nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
 
-    // Imprime resultados en el formato solicitado
-    fprintf(output_file, "#instancia;%d;nsoluciones;%d;runtime;%f;nodos_expandidos;%llu;nodos_generados;%llu\n",
-            1, nsolutions, runtime * 1000, stat_expansions, stat_generated);
-
-    fclose(output_file);
-}
-
-
-/*----------------------------------------------------------------------------------*/
-/* antiguo MAIN
-int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        printf("Uso: %s <NY-road-d.txt> <salida344.csv>\n", argv[0]);
-        return 1;
+        fprintf(output_file, "GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n",
+                solutions[nsolutions - 1][0], solutions[nsolutions - 1][1],
+                nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
     }
 
-    read_adjacent_table(argv[1]);
-    new_graph();
+    // Finalización del segmento
+    printf("Segmento %u -> %u procesado.\n\n", current_start, current_goal);
+    fprintf(output_file, "Segmento %u -> %u procesado.\n\n", current_start, current_goal);
+}
 
-    unsigned start_points[] = {180833, 100000, 150000}; // Ejemplo de múltiples inicios
-    unsigned goal_points[] = {83149, 90000, 160000};   // Ejemplo de múltiples metas
-    unsigned i, j; // Declarar fuera del bucle
+void read_queries(const char* filename, unsigned start_points[], unsigned stop1[], unsigned stop2[], unsigned goal_points[], unsigned* num_routes) {
+    FILE* file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Error al abrir el archivo %s.\n", filename);
+        exit(EXIT_FAILURE);
+    }
 
-    for (i = 0; i < sizeof(start_points) / sizeof(start_points[0]); i++) {
-        for (j = 0; j < sizeof(goal_points) / sizeof(goal_points[0]); j++) {
-            start = start_points[i];
-            goal = goal_points[j];
-            printf("Resolviendo de %u a %u\n", start, goal);
+    unsigned start, stop1_node, stop2_node, goal;
+    *num_routes = 0;
 
-            call_boastar(argv[2]);
+    // Leer las líneas del archivo
+    while (fscanf(file, "%u %u %u %u", &start, &stop1_node, &stop2_node, &goal) == 4) {
+        start_points[*num_routes] = start;
+        stop1[*num_routes] = stop1_node;
+        stop2[*num_routes] = stop2_node;
+        goal_points[*num_routes] = goal;
+        (*num_routes)++;
+
+        if (*num_routes >= MAX_ROUTES) {
+            printf("Se alcanzó el límite máximo de rutas (%d).\n", MAX_ROUTES);
+            break;
         }
     }
 
-    return 0;
-}*/
+    fclose(file);
+}
 
+/*----------------------------------------------------------------------------------*/
+// antiguo MAIN
+int main(int argc, char* argv[]) {
+    if (argc != 4) {
+        printf("Uso: %s <NY-road-d.txt> <NY-queries-2p.txt> <output.txt>\n", argv[0]);
+        return 1;
+    }
+
+    // Leer el grafo desde el archivo
+    printf("Cargando grafo desde %s...\n", argv[1]);
+    read_adjacent_table(argv[1]);
+    new_graph();
+
+    // Leer rutas desde el archivo
+    unsigned start_points[MAX_ROUTES], stop1[MAX_ROUTES], stop2[MAX_ROUTES], goal_points[MAX_ROUTES];
+    unsigned num_routes = 0;
+    read_queries(argv[2], start_points, stop1, stop2, goal_points, &num_routes);
+
+    // Abrir archivo de salida
+    FILE* output_file = fopen(argv[3], "w");
+    if (output_file == NULL) {
+        printf("Error al abrir el archivo de salida %s.\n", argv[3]);
+        return 1;
+    }
+
+    // Procesar cada ruta
+    unsigned i;
+    for (i = 0; i < num_routes; i++) {
+        printf("Procesando ruta #%u: %u -> %u -> %u -> %u\n", i + 1, start_points[i], stop1[i], stop2[i], goal_points[i]);
+        fprintf(output_file, "Ruta #%u: %u -> %u -> %u -> %u\n", i + 1, start_points[i], stop1[i], stop2[i], goal_points[i]);
+
+        // Segmento 1: start -> stop1
+        call_boastar_and_log(output_file, start_points[i], stop1[i], i * 3 + 1);
+
+        // Segmento 2: stop1 -> stop2
+        call_boastar_and_log(output_file, stop1[i], stop2[i], i * 3 + 2);
+
+        // Segmento 3: stop2 -> goal
+        call_boastar_and_log(output_file, stop2[i], goal_points[i], i * 3 + 3);
+    }
+
+    printf("Todas las rutas han sido procesadas.\n");
+    fprintf(output_file, "Todas las rutas han sido procesadas.\n");
+
+    fclose(output_file);
+    return 0;
+}
+/*
 void read_queries(const char* filename, unsigned start[], unsigned stop1[], unsigned stop2[], unsigned goal[], unsigned* num_routes) {
     FILE* file = fopen(filename, "r");
     if (file == NULL) {
@@ -629,7 +677,7 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
-
+*/
 
 
 /*

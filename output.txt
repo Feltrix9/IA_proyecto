@@ -1,100 +1,326 @@
-Ruta #1: 2995 ? 2515 ? 1443 ? 20386
-#instancia;1;nsoluciones;0;runtime;1.002000;nodos_expandidos;0;nodos_generados;0
-#instancia;2;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;3;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #2: 433 ? 22660 ? 16133 ? 18273
-#instancia;4;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;5;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;6;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #3: 35027 ? 15790 ? 199719 ? 40931
-#instancia;7;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;8;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;9;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #4: 25126 ? 15430 ? 13102 ? 36274
-#instancia;10;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;11;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;12;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #5: 78621 ? 73259 ? 4531 ? 34196
-#instancia;13;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;14;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;15;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #6: 638 ? 25783 ? 25006 ? 90568
-#instancia;16;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;17;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;18;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #7: 36255 ? 28938 ? 59415 ? 57876
-#instancia;19;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;20;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;21;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #8: 57572 ? 119727 ? 59624 ? 178689
-#instancia;22;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;23;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;24;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #9: 36925 ? 22048 ? 118369 ? 1476
-#instancia;25;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;26;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;27;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #10: 50577 ? 14361 ? 9409 ? 250971
-#instancia;28;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;29;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;30;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #11: 34163 ? 31977 ? 76252 ? 8825
-#instancia;31;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;32;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;33;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #12: 62469 ? 28221 ? 17517 ? 125217
-#instancia;34;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;35;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;36;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #13: 44994 ? 37058 ? 95256 ? 38247
-#instancia;37;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;38;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;39;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #14: 35388 ? 181547 ? 162984 ? 249958
-#instancia;40;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;41;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;42;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #15: 256351 ? 4977 ? 41228 ? 179744
-#instancia;43;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;44;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;45;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #16: 23956 ? 164821 ? 158010 ? 48345
-#instancia;46;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;47;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;48;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #17: 261555 ? 181288 ? 62542 ? 4503
-#instancia;49;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;50;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;51;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #18: 24671 ? 100382 ? 20098 ? 149399
-#instancia;52;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;53;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;54;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #19: 213528 ? 67115 ? 48021 ? 60601
-#instancia;55;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;56;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;57;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #20: 38268 ? 225008 ? 31517 ? 134597
-#instancia;58;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;59;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;60;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #21: 195672 ? 181405 ? 24977 ? 85328
-#instancia;61;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;62;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;63;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #22: 18201 ? 200004 ? 30228 ? 68380
-#instancia;64;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;65;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;66;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #23: 138538 ? 3324 ? 253906 ? 18692
-#instancia;67;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;68;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;69;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #24: 234570 ? 28493 ? 5425 ? 177807
-#instancia;70;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;71;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;72;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-Ruta #25: 20754 ? 7330 ? 39855 ? 18352
-#instancia;73;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;74;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
-#instancia;75;nsoluciones;0;runtime;0.000000;nodos_expandidos;0;nodos_generados;0
+Ruta #1: 2995 -> 2515 -> 1443 -> 20386
+Ejecutando BOA* para el segmento 2995 -> 2515
+GOAL [13730,34324] nsolutions:1 expanded:12 generated:30 heapsize:0 pruned:18
+Segmento 2995 -> 2515 procesado.
+
+Ejecutando BOA* para el segmento 2515 -> 1443
+No se encontraron soluciones para el segmento 2515 -> 1443
+Segmento 2515 -> 1443 procesado.
+
+Ejecutando BOA* para el segmento 1443 -> 20386
+No se encontraron soluciones para el segmento 1443 -> 20386
+Segmento 1443 -> 20386 procesado.
+
+Ruta #2: 433 -> 22660 -> 16133 -> 18273
+Ejecutando BOA* para el segmento 433 -> 22660
+No se encontraron soluciones para el segmento 433 -> 22660
+Segmento 433 -> 22660 procesado.
+
+Ejecutando BOA* para el segmento 22660 -> 16133
+No se encontraron soluciones para el segmento 22660 -> 16133
+Segmento 22660 -> 16133 procesado.
+
+Ejecutando BOA* para el segmento 16133 -> 18273
+No se encontraron soluciones para el segmento 16133 -> 18273
+Segmento 16133 -> 18273 procesado.
+
+Ruta #3: 35027 -> 15790 -> 199719 -> 40931
+Ejecutando BOA* para el segmento 35027 -> 15790
+No se encontraron soluciones para el segmento 35027 -> 15790
+Segmento 35027 -> 15790 procesado.
+
+Ejecutando BOA* para el segmento 15790 -> 199719
+No se encontraron soluciones para el segmento 15790 -> 199719
+Segmento 15790 -> 199719 procesado.
+
+Ejecutando BOA* para el segmento 199719 -> 40931
+No se encontraron soluciones para el segmento 199719 -> 40931
+Segmento 199719 -> 40931 procesado.
+
+Ruta #4: 25126 -> 15430 -> 13102 -> 36274
+Ejecutando BOA* para el segmento 25126 -> 15430
+No se encontraron soluciones para el segmento 25126 -> 15430
+Segmento 25126 -> 15430 procesado.
+
+Ejecutando BOA* para el segmento 15430 -> 13102
+No se encontraron soluciones para el segmento 15430 -> 13102
+Segmento 15430 -> 13102 procesado.
+
+Ejecutando BOA* para el segmento 13102 -> 36274
+No se encontraron soluciones para el segmento 13102 -> 36274
+Segmento 13102 -> 36274 procesado.
+
+Ruta #5: 78621 -> 73259 -> 4531 -> 34196
+Ejecutando BOA* para el segmento 78621 -> 73259
+No se encontraron soluciones para el segmento 78621 -> 73259
+Segmento 78621 -> 73259 procesado.
+
+Ejecutando BOA* para el segmento 73259 -> 4531
+No se encontraron soluciones para el segmento 73259 -> 4531
+Segmento 73259 -> 4531 procesado.
+
+Ejecutando BOA* para el segmento 4531 -> 34196
+No se encontraron soluciones para el segmento 4531 -> 34196
+Segmento 4531 -> 34196 procesado.
+
+Ruta #6: 638 -> 25783 -> 25006 -> 90568
+Ejecutando BOA* para el segmento 638 -> 25783
+No se encontraron soluciones para el segmento 638 -> 25783
+Segmento 638 -> 25783 procesado.
+
+Ejecutando BOA* para el segmento 25783 -> 25006
+No se encontraron soluciones para el segmento 25783 -> 25006
+Segmento 25783 -> 25006 procesado.
+
+Ejecutando BOA* para el segmento 25006 -> 90568
+No se encontraron soluciones para el segmento 25006 -> 90568
+Segmento 25006 -> 90568 procesado.
+
+Ruta #7: 36255 -> 28938 -> 59415 -> 57876
+Ejecutando BOA* para el segmento 36255 -> 28938
+No se encontraron soluciones para el segmento 36255 -> 28938
+Segmento 36255 -> 28938 procesado.
+
+Ejecutando BOA* para el segmento 28938 -> 59415
+No se encontraron soluciones para el segmento 28938 -> 59415
+Segmento 28938 -> 59415 procesado.
+
+Ejecutando BOA* para el segmento 59415 -> 57876
+No se encontraron soluciones para el segmento 59415 -> 57876
+Segmento 59415 -> 57876 procesado.
+
+Ruta #8: 57572 -> 119727 -> 59624 -> 178689
+Ejecutando BOA* para el segmento 57572 -> 119727
+No se encontraron soluciones para el segmento 57572 -> 119727
+Segmento 57572 -> 119727 procesado.
+
+Ejecutando BOA* para el segmento 119727 -> 59624
+No se encontraron soluciones para el segmento 119727 -> 59624
+Segmento 119727 -> 59624 procesado.
+
+Ejecutando BOA* para el segmento 59624 -> 178689
+No se encontraron soluciones para el segmento 59624 -> 178689
+Segmento 59624 -> 178689 procesado.
+
+Ruta #9: 36925 -> 22048 -> 118369 -> 1476
+Ejecutando BOA* para el segmento 36925 -> 22048
+No se encontraron soluciones para el segmento 36925 -> 22048
+Segmento 36925 -> 22048 procesado.
+
+Ejecutando BOA* para el segmento 22048 -> 118369
+No se encontraron soluciones para el segmento 22048 -> 118369
+Segmento 22048 -> 118369 procesado.
+
+Ejecutando BOA* para el segmento 118369 -> 1476
+No se encontraron soluciones para el segmento 118369 -> 1476
+Segmento 118369 -> 1476 procesado.
+
+Ruta #10: 50577 -> 14361 -> 9409 -> 250971
+Ejecutando BOA* para el segmento 50577 -> 14361
+No se encontraron soluciones para el segmento 50577 -> 14361
+Segmento 50577 -> 14361 procesado.
+
+Ejecutando BOA* para el segmento 14361 -> 9409
+No se encontraron soluciones para el segmento 14361 -> 9409
+Segmento 14361 -> 9409 procesado.
+
+Ejecutando BOA* para el segmento 9409 -> 250971
+No se encontraron soluciones para el segmento 9409 -> 250971
+Segmento 9409 -> 250971 procesado.
+
+Ruta #11: 34163 -> 31977 -> 76252 -> 8825
+Ejecutando BOA* para el segmento 34163 -> 31977
+No se encontraron soluciones para el segmento 34163 -> 31977
+Segmento 34163 -> 31977 procesado.
+
+Ejecutando BOA* para el segmento 31977 -> 76252
+No se encontraron soluciones para el segmento 31977 -> 76252
+Segmento 31977 -> 76252 procesado.
+
+Ejecutando BOA* para el segmento 76252 -> 8825
+No se encontraron soluciones para el segmento 76252 -> 8825
+Segmento 76252 -> 8825 procesado.
+
+Ruta #12: 62469 -> 28221 -> 17517 -> 125217
+Ejecutando BOA* para el segmento 62469 -> 28221
+No se encontraron soluciones para el segmento 62469 -> 28221
+Segmento 62469 -> 28221 procesado.
+
+Ejecutando BOA* para el segmento 28221 -> 17517
+No se encontraron soluciones para el segmento 28221 -> 17517
+Segmento 28221 -> 17517 procesado.
+
+Ejecutando BOA* para el segmento 17517 -> 125217
+No se encontraron soluciones para el segmento 17517 -> 125217
+Segmento 17517 -> 125217 procesado.
+
+Ruta #13: 44994 -> 37058 -> 95256 -> 38247
+Ejecutando BOA* para el segmento 44994 -> 37058
+No se encontraron soluciones para el segmento 44994 -> 37058
+Segmento 44994 -> 37058 procesado.
+
+Ejecutando BOA* para el segmento 37058 -> 95256
+No se encontraron soluciones para el segmento 37058 -> 95256
+Segmento 37058 -> 95256 procesado.
+
+Ejecutando BOA* para el segmento 95256 -> 38247
+No se encontraron soluciones para el segmento 95256 -> 38247
+Segmento 95256 -> 38247 procesado.
+
+Ruta #14: 35388 -> 181547 -> 162984 -> 249958
+Ejecutando BOA* para el segmento 35388 -> 181547
+No se encontraron soluciones para el segmento 35388 -> 181547
+Segmento 35388 -> 181547 procesado.
+
+Ejecutando BOA* para el segmento 181547 -> 162984
+No se encontraron soluciones para el segmento 181547 -> 162984
+Segmento 181547 -> 162984 procesado.
+
+Ejecutando BOA* para el segmento 162984 -> 249958
+No se encontraron soluciones para el segmento 162984 -> 249958
+Segmento 162984 -> 249958 procesado.
+
+Ruta #15: 256351 -> 4977 -> 41228 -> 179744
+Ejecutando BOA* para el segmento 256351 -> 4977
+No se encontraron soluciones para el segmento 256351 -> 4977
+Segmento 256351 -> 4977 procesado.
+
+Ejecutando BOA* para el segmento 4977 -> 41228
+No se encontraron soluciones para el segmento 4977 -> 41228
+Segmento 4977 -> 41228 procesado.
+
+Ejecutando BOA* para el segmento 41228 -> 179744
+No se encontraron soluciones para el segmento 41228 -> 179744
+Segmento 41228 -> 179744 procesado.
+
+Ruta #16: 23956 -> 164821 -> 158010 -> 48345
+Ejecutando BOA* para el segmento 23956 -> 164821
+No se encontraron soluciones para el segmento 23956 -> 164821
+Segmento 23956 -> 164821 procesado.
+
+Ejecutando BOA* para el segmento 164821 -> 158010
+No se encontraron soluciones para el segmento 164821 -> 158010
+Segmento 164821 -> 158010 procesado.
+
+Ejecutando BOA* para el segmento 158010 -> 48345
+No se encontraron soluciones para el segmento 158010 -> 48345
+Segmento 158010 -> 48345 procesado.
+
+Ruta #17: 261555 -> 181288 -> 62542 -> 4503
+Ejecutando BOA* para el segmento 261555 -> 181288
+No se encontraron soluciones para el segmento 261555 -> 181288
+Segmento 261555 -> 181288 procesado.
+
+Ejecutando BOA* para el segmento 181288 -> 62542
+No se encontraron soluciones para el segmento 181288 -> 62542
+Segmento 181288 -> 62542 procesado.
+
+Ejecutando BOA* para el segmento 62542 -> 4503
+No se encontraron soluciones para el segmento 62542 -> 4503
+Segmento 62542 -> 4503 procesado.
+
+Ruta #18: 24671 -> 100382 -> 20098 -> 149399
+Ejecutando BOA* para el segmento 24671 -> 100382
+No se encontraron soluciones para el segmento 24671 -> 100382
+Segmento 24671 -> 100382 procesado.
+
+Ejecutando BOA* para el segmento 100382 -> 20098
+No se encontraron soluciones para el segmento 100382 -> 20098
+Segmento 100382 -> 20098 procesado.
+
+Ejecutando BOA* para el segmento 20098 -> 149399
+No se encontraron soluciones para el segmento 20098 -> 149399
+Segmento 20098 -> 149399 procesado.
+
+Ruta #19: 213528 -> 67115 -> 48021 -> 60601
+Ejecutando BOA* para el segmento 213528 -> 67115
+No se encontraron soluciones para el segmento 213528 -> 67115
+Segmento 213528 -> 67115 procesado.
+
+Ejecutando BOA* para el segmento 67115 -> 48021
+No se encontraron soluciones para el segmento 67115 -> 48021
+Segmento 67115 -> 48021 procesado.
+
+Ejecutando BOA* para el segmento 48021 -> 60601
+No se encontraron soluciones para el segmento 48021 -> 60601
+Segmento 48021 -> 60601 procesado.
+
+Ruta #20: 38268 -> 225008 -> 31517 -> 134597
+Ejecutando BOA* para el segmento 38268 -> 225008
+No se encontraron soluciones para el segmento 38268 -> 225008
+Segmento 38268 -> 225008 procesado.
+
+Ejecutando BOA* para el segmento 225008 -> 31517
+No se encontraron soluciones para el segmento 225008 -> 31517
+Segmento 225008 -> 31517 procesado.
+
+Ejecutando BOA* para el segmento 31517 -> 134597
+No se encontraron soluciones para el segmento 31517 -> 134597
+Segmento 31517 -> 134597 procesado.
+
+Ruta #21: 195672 -> 181405 -> 24977 -> 85328
+Ejecutando BOA* para el segmento 195672 -> 181405
+No se encontraron soluciones para el segmento 195672 -> 181405
+Segmento 195672 -> 181405 procesado.
+
+Ejecutando BOA* para el segmento 181405 -> 24977
+No se encontraron soluciones para el segmento 181405 -> 24977
+Segmento 181405 -> 24977 procesado.
+
+Ejecutando BOA* para el segmento 24977 -> 85328
+No se encontraron soluciones para el segmento 24977 -> 85328
+Segmento 24977 -> 85328 procesado.
+
+Ruta #22: 18201 -> 200004 -> 30228 -> 68380
+Ejecutando BOA* para el segmento 18201 -> 200004
+No se encontraron soluciones para el segmento 18201 -> 200004
+Segmento 18201 -> 200004 procesado.
+
+Ejecutando BOA* para el segmento 200004 -> 30228
+No se encontraron soluciones para el segmento 200004 -> 30228
+Segmento 200004 -> 30228 procesado.
+
+Ejecutando BOA* para el segmento 30228 -> 68380
+No se encontraron soluciones para el segmento 30228 -> 68380
+Segmento 30228 -> 68380 procesado.
+
+Ruta #23: 138538 -> 3324 -> 253906 -> 18692
+Ejecutando BOA* para el segmento 138538 -> 3324
+No se encontraron soluciones para el segmento 138538 -> 3324
+Segmento 138538 -> 3324 procesado.
+
+Ejecutando BOA* para el segmento 3324 -> 253906
+No se encontraron soluciones para el segmento 3324 -> 253906
+Segmento 3324 -> 253906 procesado.
+
+Ejecutando BOA* para el segmento 253906 -> 18692
+No se encontraron soluciones para el segmento 253906 -> 18692
+Segmento 253906 -> 18692 procesado.
+
+Ruta #24: 234570 -> 28493 -> 5425 -> 177807
+Ejecutando BOA* para el segmento 234570 -> 28493
+No se encontraron soluciones para el segmento 234570 -> 28493
+Segmento 234570 -> 28493 procesado.
+
+Ejecutando BOA* para el segmento 28493 -> 5425
+No se encontraron soluciones para el segmento 28493 -> 5425
+Segmento 28493 -> 5425 procesado.
+
+Ejecutando BOA* para el segmento 5425 -> 177807
+No se encontraron soluciones para el segmento 5425 -> 177807
+Segmento 5425 -> 177807 procesado.
+
+Ruta #25: 20754 -> 7330 -> 39855 -> 18352
+Ejecutando BOA* para el segmento 20754 -> 7330
+No se encontraron soluciones para el segmento 20754 -> 7330
+Segmento 20754 -> 7330 procesado.
+
+Ejecutando BOA* para el segmento 7330 -> 39855
+No se encontraron soluciones para el segmento 7330 -> 39855
+Segmento 7330 -> 39855 procesado.
+
+Ejecutando BOA* para el segmento 39855 -> 18352
+No se encontraron soluciones para el segmento 39855 -> 18352
+Segmento 39855 -> 18352 procesado.
+
+Todas las rutas han sido procesadas.
