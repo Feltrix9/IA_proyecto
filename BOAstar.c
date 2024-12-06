@@ -500,32 +500,8 @@ void call_boastar(const char* output_filename) {
 
 
 /*----------------------------------------------------------------------------------*/
-/* antiguo MAIN
-int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        printf("Uso: %s <NY-road-d.txt> <salida344.csv>\n", argv[0]);
-        return 1;
-    }
+// antiguo MAIN
 
-    read_adjacent_table(argv[1]);
-    new_graph();
-
-    unsigned start_points[] = {180833, 100000, 150000}; // Ejemplo de múltiples inicios
-    unsigned goal_points[] = {83149, 90000, 160000};   // Ejemplo de múltiples metas
-    unsigned i, j; // Declarar fuera del bucle
-
-    for (i = 0; i < sizeof(start_points) / sizeof(start_points[0]); i++) {
-        for (j = 0; j < sizeof(goal_points) / sizeof(goal_points[0]); j++) {
-            start = start_points[i];
-            goal = goal_points[j];
-            printf("Resolviendo de %u a %u\n", start, goal);
-
-            call_boastar(argv[2]);
-        }
-    }
-
-    return 0;
-}*/
 
 void read_queries(const char* filename, unsigned start[], unsigned stop1[], unsigned stop2[], unsigned goal[], unsigned* num_routes) {
     FILE* file = fopen(filename, "r");
@@ -581,6 +557,44 @@ void call_boastar_and_log(FILE* output_file, unsigned current_start, unsigned cu
            instance, nsolutions, runtime * 1000, stat_expansions, stat_generated);
 }
 
+    
+int main(int argc, char* argv[]) {
+    if (argc != 3) {
+        printf("Uso: %s <NY-road-d.txt> <salida344.csv>\n", argv[0]);
+        return 1;
+    }
+
+    read_adjacent_table(argv[1]);
+    new_graph();
+
+    unsigned start_points[] = {2995, 2515, 1443}; // Ejemplo de múltiples inicios
+    unsigned goal_points[] = {2515, 1443, 20386};   // Ejemplo de múltiples metas
+    unsigned num_pairs = sizeof(start_points) / sizeof(start_points[0]); // Número de pares
+
+    if (num_pairs != sizeof(goal_points) / sizeof(goal_points[0])) {
+        printf("Error: start_points y goal_points deben tener el mismo número de elementos.\n");
+        return 1;
+    }
+
+    unsigned i; // Declarar la variable fuera del bucle
+
+    for (i = 0; i < num_pairs; i++) { // Usar la variable declarada
+        start = start_points[i];
+        goal = goal_points[i];
+        printf("Resolviendo de %u a %u\n", start, goal);
+
+        call_boastar(argv[2]);
+
+        // Marcar los índices como "usados" (puedes usar lógica específica si es necesario)
+        start_points[i] = 0; // Marcar el inicio como "usado"
+        goal_points[i] = 0;  // Marcar el objetivo como "usado"
+    }
+
+    printf("Todos los pares han sido procesados.\n");
+    //start otro codigo con las soluciones
+    return 0;
+}
+/*
 int main(int argc, char* argv[]) {
     if (argc != 4) {
         printf("Uso: %s <NY-road-d.txt> <NY-queries-2p.txt> <output.txt>\n", argv[0]);
@@ -630,7 +644,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-
+*/
 
 /*
 int main(int argc, char* argv[]) {
