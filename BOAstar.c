@@ -466,7 +466,7 @@ int boastar() {
 }
 
 /* ------------------------------------------------------------------------------*/
-void call_boastar_and_log(FILE* output_file, unsigned current_start, unsigned current_goal, int instance) {
+  void call_boastar_and_log(FILE* output_file, unsigned current_start, unsigned current_goal, int instance) {
     printf("Ejecutando BOA* para el segmento %u -> %u\n", current_start, current_goal);
     fprintf(output_file, "Ejecutando BOA* para el segmento %u -> %u\n", current_start, current_goal);
 
@@ -486,6 +486,12 @@ void call_boastar_and_log(FILE* output_file, unsigned current_start, unsigned cu
         printf("No se encontraron soluciones para el segmento %u -> %u\n", current_start, current_goal);
         fprintf(output_file, "No se encontraron soluciones para el segmento %u -> %u\n", current_start, current_goal);
     } else {
+        // Detalles del segmento procesado
+        for (unsigned i = 0; i < nsolutions; i++) {
+            printf("Solución %u: [%u, %u]\n", i + 1, solutions[i][0], solutions[i][1]);
+            fprintf(output_file, "Solución %u: [%u, %u]\n", i + 1, solutions[i][0], solutions[i][1]);
+        }
+
         printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n",
                solutions[nsolutions - 1][0], solutions[nsolutions - 1][1],
                nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
@@ -574,6 +580,10 @@ int main(int argc, char* argv[]) {
     fclose(output_file);
     return 0;
 }
+	
+
+
+
 /*
 void read_queries(const char* filename, unsigned start[], unsigned stop1[], unsigned stop2[], unsigned goal[], unsigned* num_routes) {
     FILE* file = fopen(filename, "r");

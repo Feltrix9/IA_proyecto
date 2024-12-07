@@ -1,5 +1,6 @@
 Ruta #1: 2995 -> 2515 -> 1443 -> 20386
 Ejecutando BOA* para el segmento 2995 -> 2515
+Solución 1: [13730, 34324]
 GOAL [13730,34324] nsolutions:1 expanded:12 generated:30 heapsize:0 pruned:18
 Segmento 2995 -> 2515 procesado.
 
