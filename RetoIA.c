@@ -1,20 +1,13 @@
-////////////////////////////////////////////////
-// Carlos Hernandez
-// All rights reserved
-/////////////////////////////////////////////////////////////////////
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/time.h>
-#include <unistd.h>
+#include <time.h>
+#include <sys/time.h> // Added to define struct timeval
+// #include <unistd.h> // Removed as it is not necessary for this code
 
 #define MAXNODES 4000000
 #define MAXNEIGH 45
 #define MAX_SOLUTIONS 1000000
 #define MAX_RECYCLE   100000
-
-#define MAX_ROUTES 1000 // Máximo número de rutas permitidas
-#define MAX_SEGMENTS 3 // Segmentos por ruta (inicio ? parada_1 ? parada_2 ? final)
 
 #define LARGE  1000000000
 #define BASE   10000000
@@ -41,10 +34,15 @@ typedef struct snode snode;
 
 struct snode // BOA*'s search nodes
 {
+  int cost; // Costo acumulado
+  int stops; // NÃºmero de paradas
+  struct snode* prev; // Nodo anterior en la ruta
+  // Otros campos necesarios
   int state;
   unsigned g1;
   unsigned g2;
   double key;
+
   unsigned long heapindex;
   snode *searchtree;
 };
@@ -279,10 +277,10 @@ void read_adjacent_table(const char* filename) {
 	int i, ori, dest, dist, t;
 	f = fopen(filename, "r");
 	int num_arcs = 0;
-    if (f == NULL) {
-        fprintf(stderr, "Error: No se puede abrir el archivo %s.\n", filename);
-        exit(EXIT_FAILURE);
-    }
+	if (f == NULL) 	{
+		printf("Cannot open file %s.\n", filename);
+		exit(1);
+	}
 	fscanf(f, "%d %d", &num_gnodes, &num_arcs);
 	fscanf(f, "\n");
 //	printf("%d %d", num_gnodes, num_arcs);
@@ -363,23 +361,10 @@ snode* new_node() {
     return state;
 }
 
-
-void write_solution_to_file(unsigned solution_index, unsigned g1, unsigned g2) {
-    const char* filename = "solutions.txt";
-
-    FILE* solution_file = fopen(filename, "a"); // Usamos "a" para añadir contenido al archivo existente.
-    if (solution_file == NULL) {
-        printf("Error al abrir el archivo %s.\n", filename);
-        exit(EXIT_FAILURE);
-    }
-
-    fprintf(solution_file, "%u %u %u\n", solution_index, g1, g2);
-
-    fclose(solution_file);
-}
-
-
 int boastar() {
+	FILE* f;
+	f = fopen("NodosUtilizados.txt", "a");
+	
     snode* recycled_nodes[MAX_RECYCLE];
     int next_recycled = 0;
     nsolutions = 0;
@@ -397,7 +382,7 @@ int boastar() {
 
     stat_expansions = 0;
     while (topheap() != NULL) {
-        snode* n = popheap();
+        snode* n = popheap(); //best node in open
         short d;
 
         if (n->g2 >= graph_node[n->state].gmin || n->g2 + graph_node[n->state].h2 >= minf_solution) {
@@ -410,15 +395,15 @@ int boastar() {
 
         graph_node[n->state].gmin = n->g2;
 
+
         if (n->state == goal) {
-            printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n",
-                   n->g1, n->g2, nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
-
-            solutions[nsolutions][0] = n->g1;
+            printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n", n->g1, n->g2, nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
+            fprintf(f,"%d;%d\n",n->g1, n->g2); 
+			//getchar();
+            
+			solutions[nsolutions][0] = n->g1;
             solutions[nsolutions][1] = n->g2;
-            write_solution_to_file(nsolutions, n->g1, n->g2); // Crear archivo .txt
             nsolutions++;
-
             if (nsolutions > MAX_SOLUTIONS) {
                 printf("Maximum number of solutions reached, increase MAX_SOLUTIONS!\n");
                 exit(1);
@@ -445,12 +430,18 @@ int boastar() {
             if (newg2 >= graph_node[nsucc].gmin || newg2 + h2 >= minf_solution)
                 continue;
 
+			//if (nsucc == 153532-1 || nsucc == 108746-1)	
+				//printf("No se poda %d in %d expasion (%d,%d)\n",nsucc+1,stat_expansions,newg1+h1,newg2+h2);
+
+
+
             newk1 = newg1 + h1;
             newk2 = newg2 + h2;
 
-            if (next_recycled > 0) {
+            if (next_recycled > 0) { //to reuse pruned nodes in memory
                 succ = recycled_nodes[--next_recycled];
-            } else {
+            }
+            else {
                 succ = new_node();
                 ++stat_created;
             }
@@ -467,158 +458,165 @@ int boastar() {
         }
     }
 
-    return nsolutions > 0;
+   // return nsolutions > 0;
 }
 
 /* ------------------------------------------------------------------------------*/
-void call_boastar(const char* output_filename) {
-    FILE* output_file = fopen(output_filename, "w");
-    if (output_file == NULL) {
-        printf("Error al abrir el archivo de salida %s.\n", output_filename);
-        exit(EXIT_FAILURE);
-    }
-
+void call_boastar() {
     float runtime;
     struct timeval tstart, tend;
+    unsigned long long min_cost;
+    unsigned long long min_time;
 
     initialize_parameters();
 
     gettimeofday(&tstart, NULL);
 
-    // Calcula h1 y h2 usando Dijkstra inverso
-    backward_dijkstra(1);
-    backward_dijkstra(2);
+    //Dijkstra h1
+    if (backward_dijkstra(1))
+        min_cost = start_state->h1;
 
-    // Llama a BOA*
+    //Dijkstra h2
+    if (backward_dijkstra(2))
+        min_time = start_state->h2;
+        
+    
+	//BOA*
     boastar();
 
+		
     gettimeofday(&tend, NULL);
     runtime = 1.0 * (tend.tv_sec - tstart.tv_sec) + 1.0 * (tend.tv_usec - tstart.tv_usec) / 1000000.0;
-
-    // Imprime resultados en el formato solicitado
-    fprintf(output_file, "#instancia;%d;nsoluciones;%d;runtime;%f;nodos_expandidos;%llu;nodos_generados;%llu\n",
-            1, nsolutions, runtime * 1000, stat_expansions, stat_generated);
-
-    fclose(output_file);
+    //		printf("nsolutions:%d Runtime(ms):%f Generated: %llu statexpanded1:%llu\n", nsolutions, time_astar_first1*1000, stat_generated, stat_expansions);
+    printf("%lld;%lld;%d;%f;%llu;%llu;%lu;%llu\n",
+        start_state->id + 1,
+        goal_state->id + 1,
+        nsolutions,
+        runtime * 1000,
+        stat_generated,
+        stat_expansions,
+        stat_created,
+        stat_percolations);
 }
 
+void execute_with_stops(const int stops[], int num_stops) {
+    unsigned long long total_expansions = 0, total_generated = 0;
+    float total_runtime = 0;
+    unsigned total_solutions = 0;
+
+    struct timeval tstart, tend;
+    int i;
+
+    for (i = 0; i < num_stops - 1; i++) {
+        start = stops[i];      // Nodo inicial del segmento
+        goal = stops[i + 1];   // Nodo final del segmento
+        printf("Processing segment: %d -> %d\n", start, goal);
+
+        start_state = &graph_node[start];
+        goal_state = &graph_node[goal];
+
+        gettimeofday(&tstart, NULL);
+
+        // Inicializar parï¿½metros y ejecutar BOA* para este segmento
+        initialize_parameters();
+        if (backward_dijkstra(1) && backward_dijkstra(2)) {
+            boastar();
+        }
+
+        gettimeofday(&tend, NULL);
+
+        // Calcular tiempo de ejecuciï¿½n para este segmento
+        float runtime = 1.0 * (tend.tv_sec - tstart.tv_sec) +
+                        1.0 * (tend.tv_usec - tstart.tv_usec) / 1000000.0;
+                        
+    
+        // Acumular mï¿½tricas globales
+        total_runtime += runtime;
+        total_expansions += stat_expansions;
+        total_generated += stat_generated;
+        total_solutions += nsolutions;
+		
+        // Mostrar resultados del segmento
+        printf("Segment results: Runtime %.2f ms, Solutions %d, Expansions %llu, Generated %llu\n",
+               runtime * 1000, nsolutions, stat_expansions, stat_generated);
+               
+    }
+
+    // Mostrar resultados consolidados
+    printf("Total Results:\n");
+    printf("Runtime: %.2f ms\n", total_runtime * 1000);
+    printf("Total Expansions: %llu\n", total_expansions);
+    printf("Total Generated: %llu\n", total_generated);
+    printf("Total Solutions: %u\n", total_solutions);
+}
 
 /*----------------------------------------------------------------------------------*/
-/* antiguo MAIN
-int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        printf("Uso: %s <NY-road-d.txt> <salida344.csv>\n", argv[0]);
-        return 1;
+void pareto_search(snode* start, snode* goal) {
+  emptyheap();
+  start->cost = 0;
+  start->stops = 0;
+  start->prev = NULL;
+  insertheap(start);
+
+  while (heapsize > 0) {
+    snode* current = popheap();
+    if (current == goal) {
+      // Ruta encontrada
+      return;
     }
 
-    read_adjacent_table(argv[1]);
+    // Explorar vecinos
+    for (int d = 1; d < adjacent_table[current->state][0] * 3; d += 3) {
+      snode* neighbor = new_node();
+      neighbor->state = adjacent_table[current->state][d];
+      int new_cost = current->cost + adjacent_table[current->state][d + 1];
+      int new_stops = current->stops + 1;
+
+      if (new_cost < neighbor->cost || new_stops < neighbor->stops) {
+        neighbor->cost = new_cost;
+        neighbor->stops = new_stops;
+        neighbor->prev = current;
+        insertheap(neighbor);
+      }
+    }
+  }
+}
+
+int main(int argc, char* argv[]) {
+    // Verificar que se han pasado suficientes argumentos
+    if (argc < 2) {
+        printf("Se necesitan al menos un argumento para las paradas.\n");
+        return 1;  // Salir si no se pasa ningún argumento
+    }
+
+    // Convertir los argumentos a enteros y guardarlos en un array
+    int num_stops = argc - 1;  // El número de paradas es argc - 1 porque el primer argumento es el nombre del programa
+    int stops[num_stops];
+
+    for (int i = 1; i < argc; i++) {
+        stops[i - 1] = atoi(argv[i]);  // Convertir los argumentos a enteros y almacenarlos
+    }
+
+    // Leer el grafo desde el archivo
+    read_adjacent_table("NY-road-d.txt");
+    new_graph();
+	
+    // Ejecutar BOA* para cada segmento entre paradas
+    execute_with_stops(stops, num_stops);
+
+    return 0;
+}
+/*
+int main(int argc, char* argv[]) {
+    const int stops[] = {638,25783,25006,90568};  // Lista de paradas
+    int num_stops = sizeof(stops) / sizeof(stops[0]);
+
+    // Leer el grafo desde el archivo
+    read_adjacent_table("NY-road-d.txt");
     new_graph();
 
-    unsigned start_points[] = {180833, 100000, 150000}; // Ejemplo de múltiples inicios
-    unsigned goal_points[] = {83149, 90000, 160000};   // Ejemplo de múltiples metas
-    unsigned i, j; // Declarar fuera del bucle
-
-    for (i = 0; i < sizeof(start_points) / sizeof(start_points[0]); i++) {
-        for (j = 0; j < sizeof(goal_points) / sizeof(goal_points[0]); j++) {
-            start = start_points[i];
-            goal = goal_points[j];
-            printf("Resolviendo de %u a %u\n", start, goal);
-
-            call_boastar(argv[2]);
-        }
-    }
+    // Ejecutar BOA* para cada segmento entre paradas
+    execute_with_stops(stops, num_stops);
 
     return 0;
 }*/
-
-void read_queries(const char* filename, unsigned start[], unsigned stop1[], unsigned stop2[], unsigned goal[], unsigned* num_routes) {
-    FILE* file = fopen(filename, "r");
-    if (file == NULL) {
-        printf("Error al abrir el archivo %s.\n", filename);
-        exit(EXIT_FAILURE);
-    }
-
-    unsigned inicio, parada1, parada2, final;
-    *num_routes = 0;
-
-    while (fscanf(file, "%u %u %u %u", &inicio, &parada1, &parada2, &final) == 4) {
-        start[*num_routes] = inicio;
-        stop1[*num_routes] = parada1;
-        stop2[*num_routes] = parada2;
-        goal[*num_routes] = final;
-        (*num_routes)++;
-
-        if (*num_routes >= MAX_ROUTES) {
-            printf("Se alcanzó el límite máximo de rutas (%d).\n", MAX_ROUTES);
-            break;
-        }
-    }
-
-    fclose(file);
-}
-
-int main(int argc, char* argv[]) {
-    if (argc != 4) {
-        printf("Uso: %s <NY-road-d.txt> <NY-queries-2p.txt> <output.txt>\n", argv[0]);
-        return 1;
-    }
-
-    // Leer el grafo desde NY-road-d.txt
-    printf("Cargando grafo desde %s...\n", argv[1]);
-    read_adjacent_table(argv[1]);
-    new_graph();
-
-    // Leer rutas desde NY-queries-2p.txt
-    printf("Cargando rutas desde %s...\n", argv[2]);
-    unsigned start[MAX_ROUTES], stop1[MAX_ROUTES], stop2[MAX_ROUTES], goal[MAX_ROUTES];
-    unsigned num_routes = 0;
-
-    read_queries(argv[2], start, stop1, stop2, goal, &num_routes);
-
-    // Abrir archivo de salida
-    FILE* output_file = fopen(argv[3], "w");
-    if (output_file == NULL) {
-        printf("Error al abrir el archivo de salida %s.\n", argv[3]);
-        return 1;
-    }
-
-    // Procesar cada ruta
-    unsigned i; // Declarar fuera del bucle
-    for (i = 0; i < num_routes; i++) {
-        unsigned current_start, current_goal;
-
-        printf("Procesando ruta #%u: %u ? %u ? %u ? %u\n", i + 1, start[i], stop1[i], stop2[i], goal[i]);
-        fprintf(output_file, "Ruta #%u: %u ? %u ? %u ? %u\n", i + 1, start[i], stop1[i], stop2[i], goal[i]);
-
-        // Segmento 1: inicio ? parada_1
-        current_start = start[i];
-        current_goal = stop1[i];
-        printf("  Segmento 1: %u ? %u\n", current_start, current_goal);
-        start_state = &graph_node[current_start]; // Asignar nodos directamente
-        goal_state = &graph_node[current_goal];
-        call_boastar(argv[3]);
-
-        // Segmento 2: parada_1 ? parada_2
-        current_start = stop1[i];
-        current_goal = stop2[i];
-        printf("  Segmento 2: %u ? %u\n", current_start, current_goal);
-        start_state = &graph_node[current_start];
-        goal_state = &graph_node[current_goal];
-        call_boastar(argv[3]);
-
-        // Segmento 3: parada_2 ? final
-        current_start = stop2[i];
-        current_goal = goal[i];
-        printf("  Segmento 3: %u ? %u\n", current_start, current_goal);
-        start_state = &graph_node[current_start];
-        goal_state = &graph_node[current_goal];
-        call_boastar(argv[3]);
-    }
-
-    printf("Todas las rutas han sido procesadas.\n");
-    fclose(output_file);
-
-    return 0;
-}
-
-
