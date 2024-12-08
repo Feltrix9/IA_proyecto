@@ -1,15 +1,16 @@
 Processing segment: 2995 -> 2515
 GOAL [12004,30011] nsolutions:0 expanded:11 generated:28 heapsize:17 pruned:0
-Segment results: Runtime 95.20 ms, Solutions 1, Expansions 11, Generated 28
+Segment results: Runtime 115.00 ms, Solutions 1, Expansions 11, Generated 28
 Processing segment: 2515 -> 1443
-Segment results: Runtime 92.61 ms, Solutions 0, Expansions 0, Generated 28
+Segment results: Runtime 111.99 ms, Solutions 0, Expansions 0, Generated 28
 Processing segment: 1443 -> 20386
-Segment results: Runtime 94.86 ms, Solutions 0, Expansions 0, Generated 28
+Segment results: Runtime 116.01 ms, Solutions 0, Expansions 0, Generated 28
 Total Results:
-Runtime: 282.68 ms
+Runtime: 343.00 ms
 Total Expansions: 11
 Total Generated: 84
 Total Solutions: 1
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 433 -> 22660
 GOAL [539964,978077] nsolutions:0 expanded:479 generated:1035 heapsize:556 pruned:0
 GOAL [540023,972118] nsolutions:1 expanded:834 generated:1797 heapsize:959 pruned:3
@@ -87,38 +88,40 @@ GOAL [552799,726008] nsolutions:72 expanded:24350 generated:37778 heapsize:204 p
 GOAL [554178,725397] nsolutions:73 expanded:24388 generated:37804 heapsize:56 pruned:13287
 GOAL [554390,723118] nsolutions:74 expanded:24409 generated:37829 heapsize:55 pruned:13291
 GOAL [564224,723031] nsolutions:75 expanded:24572 generated:37992 heapsize:4 pruned:13341
-Segment results: Runtime 104.88 ms, Solutions 76, Expansions 24572, Generated 37992
+Segment results: Runtime 152.72 ms, Solutions 76, Expansions 24572, Generated 37992
 Processing segment: 22660 -> 16133
 GOAL [110959,277407] nsolutions:0 expanded:103 generated:38214 heapsize:119 pruned:0
 GOAL [153917,277207] nsolutions:1 expanded:389 generated:38524 heapsize:11 pruned:131
 GOAL [155298,274303] nsolutions:2 expanded:445 generated:38589 heapsize:16 pruned:134
 GOAL [155956,273187] nsolutions:3 expanded:480 generated:38625 heapsize:10 pruned:140
 GOAL [157337,270283] nsolutions:4 expanded:513 generated:38657 heapsize:4 pruned:144
-Segment results: Runtime 101.71 ms, Solutions 5, Expansions 513, Generated 38657
+Segment results: Runtime 110.57 ms, Solutions 5, Expansions 513, Generated 38657
 Processing segment: 16133 -> 18273
 GOAL [138035,217881] nsolutions:0 expanded:452 generated:39310 heapsize:151 pruned:50
 GOAL [138229,202416] nsolutions:1 expanded:482 generated:39354 heapsize:155 pruned:59
 GOAL [140002,189913] nsolutions:2 expanded:539 generated:39432 heapsize:111 pruned:123
 GOAL [142041,185893] nsolutions:3 expanded:634 generated:39533 heapsize:48 pruned:191
-Segment results: Runtime 95.95 ms, Solutions 4, Expansions 634, Generated 39533
+Segment results: Runtime 117.02 ms, Solutions 4, Expansions 634, Generated 39533
 Total Results:
-Runtime: 302.54 ms
+Runtime: 380.31 ms
 Total Expansions: 25719
 Total Generated: 116182
 Total Solutions: 85
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 35027 -> 15790
 GOAL [108098,270243] nsolutions:0 expanded:99 generated:215 heapsize:116 pruned:0
 GOAL [110577,267561] nsolutions:1 expanded:180 generated:283 heapsize:72 pruned:30
-Segment results: Runtime 95.52 ms, Solutions 2, Expansions 180, Generated 283
+Segment results: Runtime 114.02 ms, Solutions 2, Expansions 180, Generated 283
 Processing segment: 15790 -> 199719
-Segment results: Runtime 95.79 ms, Solutions 0, Expansions 0, Generated 283
+Segment results: Runtime 113.44 ms, Solutions 0, Expansions 0, Generated 283
 Processing segment: 199719 -> 40931
-Segment results: Runtime 98.46 ms, Solutions 0, Expansions 0, Generated 283
+Segment results: Runtime 114.02 ms, Solutions 0, Expansions 0, Generated 283
 Total Results:
-Runtime: 289.78 ms
+Runtime: 341.49 ms
 Total Expansions: 180
 Total Generated: 849
 Total Solutions: 2
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 25126 -> 15430
 GOAL [205080,376719] nsolutions:0 expanded:165 generated:310 heapsize:145 pruned:0
 GOAL [205376,374340] nsolutions:1 expanded:336 generated:592 heapsize:252 pruned:3
@@ -151,30 +154,32 @@ GOAL [248320,316475] nsolutions:27 expanded:5073 generated:6076 heapsize:9 prune
 GOAL [261237,315867] nsolutions:28 expanded:5372 generated:6398 heapsize:13 pruned:985
 GOAL [262332,313987] nsolutions:29 expanded:5389 generated:6414 heapsize:4 pruned:992
 GOAL [262744,310757] nsolutions:30 expanded:5400 generated:6426 heapsize:4 pruned:992
-Segment results: Runtime 98.61 ms, Solutions 31, Expansions 5400, Generated 6426
+Segment results: Runtime 120.04 ms, Solutions 31, Expansions 5400, Generated 6426
 Processing segment: 15430 -> 13102
-Segment results: Runtime 96.95 ms, Solutions 0, Expansions 0, Generated 6426
+Segment results: Runtime 120.02 ms, Solutions 0, Expansions 0, Generated 6426
 Processing segment: 13102 -> 36274
-Segment results: Runtime 97.68 ms, Solutions 0, Expansions 0, Generated 6426
+Segment results: Runtime 112.02 ms, Solutions 0, Expansions 0, Generated 6426
 Total Results:
-Runtime: 293.24 ms
+Runtime: 352.08 ms
 Total Expansions: 5400
 Total Generated: 19278
 Total Solutions: 31
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 78621 -> 73259
 GOAL [145574,317864] nsolutions:0 expanded:127 generated:259 heapsize:132 pruned:0
 GOAL [146031,314927] nsolutions:1 expanded:224 generated:382 heapsize:147 pruned:10
 GOAL [157629,314682] nsolutions:2 expanded:307 generated:466 heapsize:3 pruned:154
-Segment results: Runtime 101.34 ms, Solutions 3, Expansions 307, Generated 466
+Segment results: Runtime 108.57 ms, Solutions 3, Expansions 307, Generated 466
 Processing segment: 73259 -> 4531
-Segment results: Runtime 96.18 ms, Solutions 0, Expansions 0, Generated 466
+Segment results: Runtime 118.43 ms, Solutions 0, Expansions 0, Generated 466
 Processing segment: 4531 -> 34196
-Segment results: Runtime 96.97 ms, Solutions 0, Expansions 0, Generated 466
+Segment results: Runtime 115.00 ms, Solutions 0, Expansions 0, Generated 466
 Total Results:
-Runtime: 294.49 ms
+Runtime: 342.00 ms
 Total Expansions: 307
 Total Generated: 1398
 Total Solutions: 3
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 638 -> 25783
 GOAL [602618,1090613] nsolutions:0 expanded:500 generated:1063 heapsize:563 pruned:0
 GOAL [602677,1084654] nsolutions:1 expanded:878 generated:1857 heapsize:978 pruned:0
@@ -369,20 +374,21 @@ GOAL [646980,674848] nsolutions:189 expanded:76809 generated:111609 heapsize:39 
 GOAL [647661,674202] nsolutions:190 expanded:76835 generated:111626 heapsize:23 pruned:34578
 GOAL [647672,673459] nsolutions:191 expanded:76844 generated:111636 heapsize:22 pruned:34579
 GOAL [647755,672949] nsolutions:192 expanded:76866 generated:111658 heapsize:20 pruned:34580
-Segment results: Runtime 117.67 ms, Solutions 193, Expansions 76866, Generated 111658
+Segment results: Runtime 213.00 ms, Solutions 193, Expansions 76866, Generated 111658
 Processing segment: 25783 -> 25006
 GOAL [96003,151463] nsolutions:0 expanded:88 generated:111858 heapsize:112 pruned:0
 GOAL [96174,149517] nsolutions:1 expanded:112 generated:111885 heapsize:113 pruned:1
 GOAL [96855,148871] nsolutions:2 expanded:273 generated:112048 heapsize:80 pruned:35
 GOAL [96866,148128] nsolutions:3 expanded:294 generated:112069 heapsize:79 pruned:35
-Segment results: Runtime 98.79 ms, Solutions 4, Expansions 294, Generated 112069
+Segment results: Runtime 121.00 ms, Solutions 4, Expansions 294, Generated 112069
 Processing segment: 25006 -> 90568
-Segment results: Runtime 95.69 ms, Solutions 0, Expansions 0, Generated 112069
+Segment results: Runtime 131.99 ms, Solutions 0, Expansions 0, Generated 112069
 Total Results:
-Runtime: 312.15 ms
+Runtime: 465.99 ms
 Total Expansions: 77160
 Total Generated: 335796
 Total Solutions: 197
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 36255 -> 28938
 GOAL [249522,393636] nsolutions:0 expanded:182 generated:318 heapsize:136 pruned:0
 GOAL [249561,391651] nsolutions:1 expanded:193 generated:331 heapsize:137 pruned:0
@@ -390,16 +396,17 @@ GOAL [249720,390218] nsolutions:2 expanded:210 generated:349 heapsize:135 pruned
 GOAL [260208,386630] nsolutions:3 expanded:604 generated:820 heapsize:63 pruned:150
 GOAL [260247,384645] nsolutions:4 expanded:615 generated:833 heapsize:62 pruned:152
 GOAL [260406,383212] nsolutions:5 expanded:631 generated:851 heapsize:60 pruned:155
-Segment results: Runtime 98.57 ms, Solutions 6, Expansions 631, Generated 851
+Segment results: Runtime 126.99 ms, Solutions 6, Expansions 631, Generated 851
 Processing segment: 28938 -> 59415
-Segment results: Runtime 97.13 ms, Solutions 0, Expansions 0, Generated 851
+Segment results: Runtime 120.00 ms, Solutions 0, Expansions 0, Generated 851
 Processing segment: 59415 -> 57876
-Segment results: Runtime 95.90 ms, Solutions 0, Expansions 0, Generated 851
+Segment results: Runtime 119.00 ms, Solutions 0, Expansions 0, Generated 851
 Total Results:
-Runtime: 291.60 ms
+Runtime: 365.99 ms
 Total Expansions: 631
 Total Generated: 2553
 Total Solutions: 6
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 57572 -> 119727
 GOAL [385053,662139] nsolutions:0 expanded:234 generated:472 heapsize:238 pruned:0
 GOAL [385948,661128] nsolutions:1 expanded:457 generated:762 heapsize:287 pruned:17
@@ -421,7 +428,7 @@ GOAL [402957,582699] nsolutions:16 expanded:4236 generated:5681 heapsize:131 pru
 GOAL [403276,581864] nsolutions:17 expanded:4339 generated:5785 heapsize:112 pruned:1317
 GOAL [404325,570464] nsolutions:18 expanded:4461 generated:6005 heapsize:167 pruned:1359
 GOAL [414184,547802] nsolutions:19 expanded:4700 generated:6380 heapsize:131 pruned:1530
-Segment results: Runtime 92.86 ms, Solutions 20, Expansions 4700, Generated 6380
+Segment results: Runtime 118.00 ms, Solutions 20, Expansions 4700, Generated 6380
 Processing segment: 119727 -> 59624
 GOAL [62849,157116] nsolutions:0 expanded:54 generated:6499 heapsize:65 pruned:0
 GOAL [67055,154552] nsolutions:1 expanded:132 generated:6595 heapsize:30 pruned:52
@@ -432,14 +439,15 @@ GOAL [67746,149464] nsolutions:5 expanded:354 generated:6861 heapsize:36 pruned:
 GOAL [67904,148808] nsolutions:6 expanded:394 generated:6901 heapsize:30 pruned:91
 GOAL [68051,148318] nsolutions:7 expanded:434 generated:6941 heapsize:27 pruned:93
 GOAL [68063,147490] nsolutions:8 expanded:474 generated:6981 heapsize:26 pruned:93
-Segment results: Runtime 91.86 ms, Solutions 9, Expansions 474, Generated 6981
+Segment results: Runtime 116.00 ms, Solutions 9, Expansions 474, Generated 6981
 Processing segment: 59624 -> 178689
-Segment results: Runtime 95.25 ms, Solutions 0, Expansions 0, Generated 6981
+Segment results: Runtime 115.06 ms, Solutions 0, Expansions 0, Generated 6981
 Total Results:
-Runtime: 279.98 ms
+Runtime: 349.05 ms
 Total Expansions: 5174
 Total Generated: 20342
 Total Solutions: 29
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 36925 -> 22048
 GOAL [213996,365589] nsolutions:0 expanded:165 generated:312 heapsize:147 pruned:0
 GOAL [215423,365329] nsolutions:1 expanded:303 generated:466 heapsize:118 pruned:44
@@ -450,16 +458,17 @@ GOAL [220671,352500] nsolutions:5 expanded:856 generated:1216 heapsize:103 prune
 GOAL [225073,351334] nsolutions:6 expanded:1140 generated:1572 heapsize:80 pruned:346
 GOAL [225276,325636] nsolutions:7 expanded:1276 generated:1806 heapsize:173 pruned:350
 GOAL [226883,318424] nsolutions:8 expanded:1394 generated:2001 heapsize:145 pruned:454
-Segment results: Runtime 92.50 ms, Solutions 9, Expansions 1394, Generated 2001
+Segment results: Runtime 116.99 ms, Solutions 9, Expansions 1394, Generated 2001
 Processing segment: 22048 -> 118369
-Segment results: Runtime 89.69 ms, Solutions 0, Expansions 0, Generated 2001
+Segment results: Runtime 107.01 ms, Solutions 0, Expansions 0, Generated 2001
 Processing segment: 118369 -> 1476
-Segment results: Runtime 94.06 ms, Solutions 0, Expansions 0, Generated 2001
+Segment results: Runtime 108.00 ms, Solutions 0, Expansions 0, Generated 2001
 Total Results:
-Runtime: 276.25 ms
+Runtime: 332.00 ms
 Total Expansions: 1394
 Total Generated: 6003
 Total Solutions: 9
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 50577 -> 14361
 GOAL [329071,563709] nsolutions:0 expanded:249 generated:489 heapsize:240 pruned:0
 GOAL [329908,563677] nsolutions:1 expanded:730 generated:1290 heapsize:513 pruned:46
@@ -477,7 +486,7 @@ GOAL [340316,426966] nsolutions:12 expanded:4482 generated:6538 heapsize:275 pru
 GOAL [341011,421355] nsolutions:13 expanded:4620 generated:6712 heapsize:225 pruned:1854
 GOAL [341971,399063] nsolutions:14 expanded:5187 generated:7528 heapsize:350 pruned:1977
 GOAL [343578,391851] nsolutions:15 expanded:5485 generated:7889 heapsize:219 pruned:2170
-Segment results: Runtime 95.80 ms, Solutions 16, Expansions 5485, Generated 7889
+Segment results: Runtime 117.68 ms, Solutions 16, Expansions 5485, Generated 7889
 Processing segment: 14361 -> 9409
 GOAL [128361,320898] nsolutions:0 expanded:100 generated:8083 heapsize:94 pruned:0
 GOAL [130045,316229] nsolutions:1 expanded:209 generated:8231 heapsize:109 pruned:23
@@ -489,14 +498,15 @@ GOAL [140654,293553] nsolutions:6 expanded:856 generated:9042 heapsize:85 pruned
 GOAL [141445,292976] nsolutions:7 expanded:924 generated:9116 heapsize:68 pruned:228
 GOAL [141833,278747] nsolutions:8 expanded:983 generated:9221 heapsize:102 pruned:239
 GOAL [145584,273447] nsolutions:9 expanded:1056 generated:9311 heapsize:31 pruned:326
-Segment results: Runtime 91.64 ms, Solutions 10, Expansions 1056, Generated 9311
+Segment results: Runtime 111.66 ms, Solutions 10, Expansions 1056, Generated 9311
 Processing segment: 9409 -> 250971
-Segment results: Runtime 96.01 ms, Solutions 0, Expansions 0, Generated 9311
+Segment results: Runtime 117.04 ms, Solutions 0, Expansions 0, Generated 9311
 Total Results:
-Runtime: 283.44 ms
+Runtime: 346.38 ms
 Total Expansions: 6541
 Total Generated: 26511
 Total Solutions: 26
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 34163 -> 31977
 GOAL [302511,569762] nsolutions:0 expanded:213 generated:389 heapsize:176 pruned:0
 GOAL [302718,564803] nsolutions:1 expanded:436 generated:737 heapsize:298 pruned:2
@@ -515,16 +525,17 @@ GOAL [353708,523469] nsolutions:13 expanded:3064 generated:3707 heapsize:18 prun
 GOAL [361739,522435] nsolutions:14 expanded:3219 generated:3860 heapsize:8 pruned:619
 GOAL [361856,522069] nsolutions:15 expanded:3320 generated:3964 heapsize:7 pruned:622
 GOAL [362293,517951] nsolutions:16 expanded:3421 generated:4089 heapsize:25 pruned:627
-Segment results: Runtime 94.51 ms, Solutions 17, Expansions 3421, Generated 4089
+Segment results: Runtime 110.00 ms, Solutions 17, Expansions 3421, Generated 4089
 Processing segment: 31977 -> 76252
-Segment results: Runtime 91.65 ms, Solutions 0, Expansions 0, Generated 4089
+Segment results: Runtime 106.98 ms, Solutions 0, Expansions 0, Generated 4089
 Processing segment: 76252 -> 8825
-Segment results: Runtime 93.20 ms, Solutions 0, Expansions 0, Generated 4089
+Segment results: Runtime 108.01 ms, Solutions 0, Expansions 0, Generated 4089
 Total Results:
-Runtime: 279.36 ms
+Runtime: 324.99 ms
 Total Expansions: 3421
 Total Generated: 12267
 Total Solutions: 17
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 62469 -> 28221
 GOAL [632212,879914] nsolutions:0 expanded:362 generated:690 heapsize:328 pruned:0
 GOAL [632454,879903] nsolutions:1 expanded:523 generated:906 heapsize:379 pruned:3
@@ -539,7 +550,7 @@ GOAL [641521,745053] nsolutions:9 expanded:6873 generated:9604 heapsize:829 prun
 GOAL [641957,730508] nsolutions:10 expanded:7020 generated:9815 heapsize:759 pruned:2026
 GOAL [644886,729406] nsolutions:11 expanded:7230 generated:10049 heapsize:163 pruned:2645
 GOAL [651010,707109] nsolutions:12 expanded:7472 generated:10284 heapsize:47 pruned:2753
-Segment results: Runtime 96.11 ms, Solutions 13, Expansions 7472, Generated 10284
+Segment results: Runtime 124.00 ms, Solutions 13, Expansions 7472, Generated 10284
 Processing segment: 28221 -> 17517
 GOAL [144500,361244] nsolutions:0 expanded:111 generated:10519 heapsize:124 pruned:0
 GOAL [146866,342521] nsolutions:1 expanded:403 generated:11044 heapsize:309 pruned:47
@@ -554,14 +565,15 @@ GOAL [154286,259424] nsolutions:9 expanded:1765 generated:13027 heapsize:287 pru
 GOAL [155619,255927] nsolutions:10 expanded:1858 generated:13128 heapsize:149 pruned:827
 GOAL [168555,255914] nsolutions:11 expanded:1937 generated:13203 heapsize:3 pruned:968
 GOAL [170043,250209] nsolutions:12 expanded:1979 generated:13264 heapsize:20 pruned:969
-Segment results: Runtime 95.47 ms, Solutions 13, Expansions 1979, Generated 13264
+Segment results: Runtime 115.00 ms, Solutions 13, Expansions 1979, Generated 13264
 Processing segment: 17517 -> 125217
-Segment results: Runtime 95.55 ms, Solutions 0, Expansions 0, Generated 13264
+Segment results: Runtime 112.00 ms, Solutions 0, Expansions 0, Generated 13264
 Total Results:
-Runtime: 287.13 ms
+Runtime: 351.00 ms
 Total Expansions: 9451
 Total Generated: 36812
 Total Solutions: 26
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 44994 -> 37058
 GOAL [148684,371706] nsolutions:0 expanded:103 generated:223 heapsize:120 pruned:0
 GOAL [177702,371419] nsolutions:1 expanded:924 generated:1360 heapsize:90 pruned:345
@@ -580,16 +592,17 @@ GOAL [219622,314445] nsolutions:13 expanded:3838 generated:5129 heapsize:90 prun
 GOAL [221644,310154] nsolutions:14 expanded:3940 generated:5288 heapsize:70 pruned:1264
 GOAL [225870,308039] nsolutions:15 expanded:4046 generated:5429 heapsize:36 pruned:1332
 GOAL [226147,307746] nsolutions:16 expanded:4138 generated:5522 heapsize:22 pruned:1346
-Segment results: Runtime 96.52 ms, Solutions 17, Expansions 4138, Generated 5522
+Segment results: Runtime 114.00 ms, Solutions 17, Expansions 4138, Generated 5522
 Processing segment: 37058 -> 95256
-Segment results: Runtime 91.66 ms, Solutions 0, Expansions 0, Generated 5522
+Segment results: Runtime 107.00 ms, Solutions 0, Expansions 0, Generated 5522
 Processing segment: 95256 -> 38247
-Segment results: Runtime 93.16 ms, Solutions 0, Expansions 0, Generated 5522
+Segment results: Runtime 111.00 ms, Solutions 0, Expansions 0, Generated 5522
 Total Results:
-Runtime: 281.34 ms
+Runtime: 332.00 ms
 Total Expansions: 4138
 Total Generated: 16566
 Total Solutions: 17
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 35388 -> 181547
 GOAL [439477,603452] nsolutions:0 expanded:338 generated:700 heapsize:362 pruned:0
 GOAL [439947,601219] nsolutions:1 expanded:535 generated:904 heapsize:357 pruned:11
@@ -607,7 +620,7 @@ GOAL [450523,587878] nsolutions:12 expanded:4320 generated:5335 heapsize:15 prun
 GOAL [480323,586853] nsolutions:13 expanded:4915 generated:5937 heapsize:8 pruned:1001
 GOAL [484730,585108] nsolutions:14 expanded:5565 generated:6625 heapsize:16 pruned:1030
 GOAL [485358,584207] nsolutions:15 expanded:5679 generated:6745 heapsize:12 pruned:1039
-Segment results: Runtime 93.21 ms, Solutions 16, Expansions 5679, Generated 6745
+Segment results: Runtime 118.03 ms, Solutions 16, Expansions 5679, Generated 6745
 Processing segment: 181547 -> 162984
 GOAL [124881,299746] nsolutions:0 expanded:104 generated:6977 heapsize:127 pruned:1
 GOAL [124950,299351] nsolutions:1 expanded:110 generated:6984 heapsize:127 pruned:1
@@ -632,14 +645,15 @@ GOAL [151364,243216] nsolutions:19 expanded:3176 generated:11103 heapsize:6 prun
 GOAL [151839,242967] nsolutions:20 expanded:3246 generated:11174 heapsize:6 pruned:1157
 GOAL [153393,239035] nsolutions:21 expanded:3324 generated:11283 heapsize:34 pruned:1159
 GOAL [157316,235496] nsolutions:22 expanded:3408 generated:11392 heapsize:25 pruned:1192
-Segment results: Runtime 92.14 ms, Solutions 23, Expansions 3408, Generated 11392
+Segment results: Runtime 114.00 ms, Solutions 23, Expansions 3408, Generated 11392
 Processing segment: 162984 -> 249958
-Segment results: Runtime 92.94 ms, Solutions 0, Expansions 0, Generated 11392
+Segment results: Runtime 110.02 ms, Solutions 0, Expansions 0, Generated 11392
 Total Results:
-Runtime: 278.29 ms
+Runtime: 342.05 ms
 Total Expansions: 9087
 Total Generated: 29529
 Total Solutions: 39
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 256351 -> 4977
 GOAL [106875,248451] nsolutions:0 expanded:82 generated:171 heapsize:89 pruned:0
 GOAL [106934,242492] nsolutions:1 expanded:132 generated:262 heapsize:129 pruned:0
@@ -663,16 +677,17 @@ GOAL [109993,181429] nsolutions:18 expanded:902 generated:1515 heapsize:259 prun
 GOAL [110006,180017] nsolutions:19 expanded:940 generated:1575 heapsize:279 pruned:337
 GOAL [110052,175470] nsolutions:20 expanded:963 generated:1613 heapsize:287 pruned:343
 GOAL [110220,172820] nsolutions:21 expanded:991 generated:1650 heapsize:255 pruned:383
-Segment results: Runtime 93.00 ms, Solutions 22, Expansions 991, Generated 1650
+Segment results: Runtime 110.01 ms, Solutions 22, Expansions 991, Generated 1650
 Processing segment: 4977 -> 41228
-Segment results: Runtime 94.16 ms, Solutions 0, Expansions 0, Generated 1650
+Segment results: Runtime 115.84 ms, Solutions 0, Expansions 0, Generated 1650
 Processing segment: 41228 -> 179744
-Segment results: Runtime 93.23 ms, Solutions 0, Expansions 0, Generated 1650
+Segment results: Runtime 109.14 ms, Solutions 0, Expansions 0, Generated 1650
 Total Results:
-Runtime: 280.38 ms
+Runtime: 334.99 ms
 Total Expansions: 991
 Total Generated: 4950
 Total Solutions: 22
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 23956 -> 164821
 GOAL [359432,651017] nsolutions:0 expanded:319 generated:789 heapsize:470 pruned:0
 GOAL [359715,647019] nsolutions:1 expanded:579 generated:1348 heapsize:764 pruned:4
@@ -745,7 +760,7 @@ GOAL [377970,439942] nsolutions:67 expanded:69454 generated:112244 heapsize:109 
 GOAL [379396,438042] nsolutions:68 expanded:69527 generated:112301 heapsize:42 pruned:42664
 GOAL [379866,435809] nsolutions:69 expanded:69552 generated:112324 heapsize:34 pruned:42669
 GOAL [383436,432478] nsolutions:70 expanded:69576 generated:112351 heapsize:13 pruned:42692
-Segment results: Runtime 110.75 ms, Solutions 71, Expansions 69576, Generated 112351
+Segment results: Runtime 206.10 ms, Solutions 71, Expansions 69576, Generated 112351
 Processing segment: 164821 -> 158010
 GOAL [136430,291273] nsolutions:0 expanded:131 generated:112638 heapsize:156 pruned:0
 GOAL [136527,290883] nsolutions:1 expanded:204 generated:112769 heapsize:213 pruned:0
@@ -773,14 +788,15 @@ GOAL [171897,236075] nsolutions:22 expanded:5405 generated:119465 heapsize:63 pr
 GOAL [173592,235445] nsolutions:23 expanded:5468 generated:119533 heapsize:25 pruned:1666
 GOAL [174975,222162] nsolutions:24 expanded:5532 generated:119631 heapsize:55 pruned:1669
 GOAL [177584,209341] nsolutions:25 expanded:5567 generated:119675 heapsize:33 pruned:1699
-Segment results: Runtime 93.68 ms, Solutions 26, Expansions 5567, Generated 119675
+Segment results: Runtime 118.00 ms, Solutions 26, Expansions 5567, Generated 119675
 Processing segment: 158010 -> 48345
-Segment results: Runtime 93.98 ms, Solutions 0, Expansions 0, Generated 119675
+Segment results: Runtime 112.00 ms, Solutions 0, Expansions 0, Generated 119675
 Total Results:
-Runtime: 298.41 ms
+Runtime: 436.10 ms
 Total Expansions: 75143
 Total Generated: 351701
 Total Solutions: 97
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 261555 -> 181288
 GOAL [544453,918344] nsolutions:0 expanded:434 generated:886 heapsize:451 pruned:1
 GOAL [544505,917501] nsolutions:1 expanded:544 generated:1002 heapsize:456 pruned:1
@@ -862,16 +878,17 @@ GOAL [573030,624367] nsolutions:76 expanded:30531 generated:40317 heapsize:79 pr
 GOAL [573334,624118] nsolutions:77 expanded:30649 generated:40434 heapsize:53 pruned:9655
 GOAL [574287,614977] nsolutions:78 expanded:30842 generated:40728 heapsize:122 pruned:9686
 GOAL [575483,613314] nsolutions:79 expanded:31020 generated:40916 heapsize:74 pruned:9743
-Segment results: Runtime 100.63 ms, Solutions 80, Expansions 31020, Generated 40916
+Segment results: Runtime 143.02 ms, Solutions 80, Expansions 31020, Generated 40916
 Processing segment: 181288 -> 62542
-Segment results: Runtime 92.74 ms, Solutions 0, Expansions 0, Generated 40916
+Segment results: Runtime 104.02 ms, Solutions 0, Expansions 0, Generated 40916
 Processing segment: 62542 -> 4503
-Segment results: Runtime 91.66 ms, Solutions 0, Expansions 0, Generated 40916
+Segment results: Runtime 105.02 ms, Solutions 0, Expansions 0, Generated 40916
 Total Results:
-Runtime: 285.03 ms
+Runtime: 352.05 ms
 Total Expansions: 31020
 Total Generated: 122748
 Total Solutions: 80
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 24671 -> 100382
 GOAL [435677,836791] nsolutions:0 expanded:375 generated:778 heapsize:403 pruned:0
 GOAL [435749,819086] nsolutions:1 expanded:398 generated:812 heapsize:412 pruned:1
@@ -935,18 +952,19 @@ GOAL [481649,612737] nsolutions:58 expanded:25394 generated:34146 heapsize:5 pru
 GOAL [482228,612232] nsolutions:59 expanded:25433 generated:34187 heapsize:5 pruned:8690
 GOAL [482617,612133] nsolutions:60 expanded:25471 generated:34226 heapsize:3 pruned:8692
 GOAL [483196,611628] nsolutions:61 expanded:25509 generated:34266 heapsize:2 pruned:8694
-Segment results: Runtime 99.28 ms, Solutions 62, Expansions 25509, Generated 34266
+Segment results: Runtime 138.07 ms, Solutions 62, Expansions 25509, Generated 34266
 Processing segment: 100382 -> 20098
 GOAL [412341,574401] nsolutions:0 expanded:1327 generated:36054 heapsize:314 pruned:147
 GOAL [457335,556699] nsolutions:1 expanded:1945 generated:36848 heapsize:128 pruned:508
-Segment results: Runtime 96.14 ms, Solutions 2, Expansions 1945, Generated 36848
+Segment results: Runtime 112.05 ms, Solutions 2, Expansions 1945, Generated 36848
 Processing segment: 20098 -> 149399
-Segment results: Runtime 93.11 ms, Solutions 0, Expansions 0, Generated 36848
+Segment results: Runtime 112.04 ms, Solutions 0, Expansions 0, Generated 36848
 Total Results:
-Runtime: 288.53 ms
+Runtime: 362.16 ms
 Total Expansions: 27454
 Total Generated: 107962
 Total Solutions: 64
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 213528 -> 67115
 GOAL [728241,1516446] nsolutions:0 expanded:567 generated:1205 heapsize:637 pruned:1
 GOAL [728245,1500482] nsolutions:1 expanded:986 generated:2054 heapsize:1065 pruned:2
@@ -1122,7 +1140,7 @@ GOAL [811554,1150045] nsolutions:170 expanded:200436 generated:268358 heapsize:9
 GOAL [812025,1147841] nsolutions:171 expanded:200485 generated:268410 heapsize:81 pruned:67673
 GOAL [817954,1147146] nsolutions:172 expanded:200533 generated:268459 heapsize:2 pruned:67752
 GOAL [822011,1145356] nsolutions:173 expanded:200573 generated:268500 heapsize:1 pruned:67753
-Segment results: Runtime 135.83 ms, Solutions 174, Expansions 200573, Generated 268500
+Segment results: Runtime 363.55 ms, Solutions 174, Expansions 200573, Generated 268500
 Processing segment: 67115 -> 48021
 GOAL [443486,818644] nsolutions:0 expanded:315 generated:269156 heapsize:341 pruned:0
 GOAL [443522,815430] nsolutions:1 expanded:536 generated:269589 heapsize:552 pruned:0
@@ -1211,7 +1229,7 @@ GOAL [477282,597732] nsolutions:83 expanded:44458 generated:330121 heapsize:72 p
 GOAL [481512,593236] nsolutions:84 expanded:44680 generated:330396 heapsize:60 pruned:17072
 GOAL [487441,592541] nsolutions:85 expanded:44837 generated:330555 heapsize:4 pruned:17129
 GOAL [491498,590751] nsolutions:86 expanded:44982 generated:330710 heapsize:11 pruned:17131
-Segment results: Runtime 103.91 ms, Solutions 87, Expansions 44982, Generated 330710
+Segment results: Runtime 165.00 ms, Solutions 87, Expansions 44982, Generated 330710
 Processing segment: 48021 -> 60601
 GOAL [270065,396549] nsolutions:0 expanded:639 generated:332022 heapsize:664 pruned:9
 GOAL [270081,393993] nsolutions:1 expanded:814 generated:332297 heapsize:760 pruned:12
@@ -1224,12 +1242,13 @@ GOAL [270781,367619] nsolutions:7 expanded:1518 generated:333341 heapsize:895 pr
 GOAL [270797,365063] nsolutions:8 expanded:1572 generated:333401 heapsize:890 pruned:221
 GOAL [271175,360041] nsolutions:9 expanded:1653 generated:333493 heapsize:763 pruned:358
 GOAL [275752,355571] nsolutions:10 expanded:1745 generated:333575 heapsize:41 pruned:1069
-Segment results: Runtime 93.64 ms, Solutions 11, Expansions 1745, Generated 333575
+Segment results: Runtime 109.00 ms, Solutions 11, Expansions 1745, Generated 333575
 Total Results:
-Runtime: 333.37 ms
+Runtime: 637.55 ms
 Total Expansions: 247300
 Total Generated: 932785
 Total Solutions: 272
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 38268 -> 225008
 GOAL [467566,1082653] nsolutions:0 expanded:313 generated:661 heapsize:348 pruned:0
 GOAL [467699,1082329] nsolutions:1 expanded:503 generated:1027 heapsize:519 pruned:4
@@ -1362,7 +1381,7 @@ GOAL [534829,631885] nsolutions:127 expanded:205881 generated:272288 heapsize:11
 GOAL [535302,630061] nsolutions:128 expanded:205897 generated:272304 heapsize:5 pruned:66274
 GOAL [540515,629195] nsolutions:129 expanded:206012 generated:272421 heapsize:1 pruned:66279
 GOAL [540988,627371] nsolutions:130 expanded:206028 generated:272437 heapsize:0 pruned:66279
-Segment results: Runtime 137.06 ms, Solutions 131, Expansions 206028, Generated 272437
+Segment results: Runtime 374.51 ms, Solutions 131, Expansions 206028, Generated 272437
 Processing segment: 225008 -> 31517
 GOAL [209402,429214] nsolutions:0 expanded:160 generated:272748 heapsize:151 pruned:0
 GOAL [210059,426869] nsolutions:1 expanded:236 generated:272837 heapsize:157 pruned:6
@@ -1390,14 +1409,15 @@ GOAL [227720,352421] nsolutions:22 expanded:2937 generated:276034 heapsize:66 pr
 GOAL [228165,352216] nsolutions:23 expanded:2980 generated:276077 heapsize:51 pruned:586
 GOAL [228894,345084] nsolutions:24 expanded:3022 generated:276143 heapsize:62 pruned:598
 GOAL [230367,341911] nsolutions:25 expanded:3065 generated:276195 heapsize:42 pruned:626
-Segment results: Runtime 94.69 ms, Solutions 26, Expansions 3065, Generated 276195
+Segment results: Runtime 110.79 ms, Solutions 26, Expansions 3065, Generated 276195
 Processing segment: 31517 -> 134597
-Segment results: Runtime 96.38 ms, Solutions 0, Expansions 0, Generated 276195
+Segment results: Runtime 111.00 ms, Solutions 0, Expansions 0, Generated 276195
 Total Results:
-Runtime: 328.13 ms
+Runtime: 596.30 ms
 Total Expansions: 209093
 Total Generated: 824827
 Total Solutions: 157
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 195672 -> 181405
 GOAL [177934,382121] nsolutions:0 expanded:193 generated:462 heapsize:269 pruned:0
 GOAL [177970,381707] nsolutions:1 expanded:385 generated:885 heapsize:499 pruned:0
@@ -1456,16 +1476,17 @@ GOAL [194483,223655] nsolutions:53 expanded:17513 generated:25530 heapsize:212 p
 GOAL [196129,220393] nsolutions:54 expanded:17609 generated:25587 heapsize:41 pruned:7883
 GOAL [197137,219715] nsolutions:55 expanded:17641 generated:25620 heapsize:17 pruned:7907
 GOAL [199062,219597] nsolutions:56 expanded:17671 generated:25650 heapsize:2 pruned:7921
-Segment results: Runtime 98.87 ms, Solutions 57, Expansions 17671, Generated 25650
+Segment results: Runtime 132.00 ms, Solutions 57, Expansions 17671, Generated 25650
 Processing segment: 181405 -> 24977
-Segment results: Runtime 96.35 ms, Solutions 0, Expansions 0, Generated 25650
+Segment results: Runtime 115.00 ms, Solutions 0, Expansions 0, Generated 25650
 Processing segment: 24977 -> 85328
-Segment results: Runtime 92.62 ms, Solutions 0, Expansions 0, Generated 25650
+Segment results: Runtime 108.84 ms, Solutions 0, Expansions 0, Generated 25650
 Total Results:
-Runtime: 287.84 ms
+Runtime: 355.84 ms
 Total Expansions: 17671
 Total Generated: 76950
 Total Solutions: 57
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 18201 -> 200004
 GOAL [344437,590710] nsolutions:0 expanded:302 generated:676 heapsize:374 pruned:0
 GOAL [344612,590112] nsolutions:1 expanded:507 generated:1088 heapsize:580 pruned:0
@@ -1525,16 +1546,17 @@ GOAL [363877,393369] nsolutions:54 expanded:21301 generated:32448 heapsize:898 p
 GOAL [365776,382829] nsolutions:55 expanded:22218 generated:33365 heapsize:506 pruned:10586
 GOAL [366164,379790] nsolutions:56 expanded:22237 generated:33382 heapsize:389 pruned:10700
 GOAL [366507,378957] nsolutions:57 expanded:22253 generated:33398 heapsize:286 pruned:10802
-Segment results: Runtime 98.43 ms, Solutions 58, Expansions 22253, Generated 33398
+Segment results: Runtime 143.01 ms, Solutions 58, Expansions 22253, Generated 33398
 Processing segment: 200004 -> 30228
-Segment results: Runtime 91.51 ms, Solutions 0, Expansions 0, Generated 33398
+Segment results: Runtime 111.55 ms, Solutions 0, Expansions 0, Generated 33398
 Processing segment: 30228 -> 68380
-Segment results: Runtime 93.19 ms, Solutions 0, Expansions 0, Generated 33398
+Segment results: Runtime 107.53 ms, Solutions 0, Expansions 0, Generated 33398
 Total Results:
-Runtime: 283.13 ms
+Runtime: 362.09 ms
 Total Expansions: 22253
 Total Generated: 100194
 Total Solutions: 58
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 138538 -> 3324
 GOAL [418153,648807] nsolutions:0 expanded:299 generated:606 heapsize:307 pruned:0
 GOAL [418212,642848] nsolutions:1 expanded:421 generated:817 heapsize:395 pruned:0
@@ -1582,7 +1604,7 @@ GOAL [424250,490335] nsolutions:42 expanded:8580 generated:12879 heapsize:741 pr
 GOAL [426024,489353] nsolutions:43 expanded:8652 generated:12906 heapsize:124 pruned:4087
 GOAL [426040,488064] nsolutions:44 expanded:8674 generated:12929 heapsize:122 pruned:4089
 GOAL [426406,487957] nsolutions:45 expanded:8696 generated:12951 heapsize:90 pruned:4120
-Segment results: Runtime 94.69 ms, Solutions 46, Expansions 8696, Generated 12951
+Segment results: Runtime 120.00 ms, Solutions 46, Expansions 8696, Generated 12951
 Processing segment: 3324 -> 253906
 GOAL [281920,476088] nsolutions:0 expanded:1099 generated:14808 heapsize:719 pruned:39
 GOAL [282366,476011] nsolutions:1 expanded:1382 generated:15240 heapsize:850 pruned:56
@@ -1633,14 +1655,15 @@ GOAL [302900,391296] nsolutions:45 expanded:11613 generated:27308 heapsize:15 pr
 GOAL [302916,390007] nsolutions:46 expanded:11667 generated:27364 heapsize:16 pruned:2684
 GOAL [304856,389631] nsolutions:47 expanded:11723 generated:27420 heapsize:1 pruned:2698
 GOAL [307605,388527] nsolutions:48 expanded:11779 generated:27477 heapsize:1 pruned:2698
-Segment results: Runtime 97.19 ms, Solutions 49, Expansions 11779, Generated 27477
+Segment results: Runtime 123.02 ms, Solutions 49, Expansions 11779, Generated 27477
 Processing segment: 253906 -> 18692
-Segment results: Runtime 95.10 ms, Solutions 0, Expansions 0, Generated 27477
+Segment results: Runtime 110.01 ms, Solutions 0, Expansions 0, Generated 27477
 Total Results:
-Runtime: 286.98 ms
+Runtime: 353.04 ms
 Total Expansions: 20475
 Total Generated: 67905
 Total Solutions: 95
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 234570 -> 28493
 GOAL [320059,796498] nsolutions:0 expanded:291 generated:599 heapsize:308 pruned:0
 GOAL [320100,795809] nsolutions:1 expanded:566 generated:1065 heapsize:498 pruned:0
@@ -1681,16 +1704,17 @@ GOAL [346649,408872] nsolutions:35 expanded:7963 generated:11797 heapsize:12 pru
 GOAL [346719,408652] nsolutions:36 expanded:7995 generated:11830 heapsize:12 pruned:3787
 GOAL [346937,408594] nsolutions:37 expanded:8019 generated:11854 heapsize:10 pruned:3788
 GOAL [347007,408374] nsolutions:38 expanded:8043 generated:11878 heapsize:9 pruned:3788
-Segment results: Runtime 96.52 ms, Solutions 39, Expansions 8043, Generated 11878
+Segment results: Runtime 131.04 ms, Solutions 39, Expansions 8043, Generated 11878
 Processing segment: 28493 -> 5425
-Segment results: Runtime 91.36 ms, Solutions 0, Expansions 0, Generated 11878
+Segment results: Runtime 121.39 ms, Solutions 0, Expansions 0, Generated 11878
 Processing segment: 5425 -> 177807
-Segment results: Runtime 92.99 ms, Solutions 0, Expansions 0, Generated 11878
+Segment results: Runtime 105.60 ms, Solutions 0, Expansions 0, Generated 11878
 Total Results:
-Runtime: 280.87 ms
+Runtime: 358.03 ms
 Total Expansions: 8043
 Total Generated: 35634
 Total Solutions: 39
+Nodos utilizados guardados en NodosUtilizados.txt
 Processing segment: 20754 -> 7330
 GOAL [159373,302359] nsolutions:0 expanded:135 generated:237 heapsize:102 pruned:0
 GOAL [159888,301036] nsolutions:1 expanded:272 generated:433 heapsize:155 pruned:5
@@ -1709,9 +1733,9 @@ GOAL [179997,269134] nsolutions:13 expanded:2190 generated:2748 heapsize:34 prun
 GOAL [189428,268230] nsolutions:14 expanded:2350 generated:2921 heapsize:13 pruned:544
 GOAL [198704,267720] nsolutions:15 expanded:2481 generated:3058 heapsize:4 pruned:558
 GOAL [199219,266397] nsolutions:16 expanded:2534 generated:3119 heapsize:8 pruned:561
-Segment results: Runtime 93.95 ms, Solutions 17, Expansions 2534, Generated 3119
+Segment results: Runtime 112.00 ms, Solutions 17, Expansions 2534, Generated 3119
 Processing segment: 7330 -> 39855
-Segment results: Runtime 96.05 ms, Solutions 0, Expansions 0, Generated 3119
+Segment results: Runtime 111.00 ms, Solutions 0, Expansions 0, Generated 3119
 Processing segment: 39855 -> 18352
 GOAL [80871,202197] nsolutions:0 expanded:90 generated:3331 heapsize:122 pruned:0
 GOAL [82792,200171] nsolutions:1 expanded:165 generated:3432 heapsize:101 pruned:46
@@ -1733,12 +1757,13 @@ GOAL [116135,155511] nsolutions:16 expanded:1880 generated:5721 heapsize:110 pru
 GOAL [116225,154831] nsolutions:17 expanded:1937 generated:5787 heapsize:116 pruned:598
 GOAL [117742,148299] nsolutions:18 expanded:2002 generated:5876 heapsize:68 pruned:669
 GOAL [117832,147619] nsolutions:19 expanded:2039 generated:5915 heapsize:66 pruned:672
-Segment results: Runtime 94.73 ms, Solutions 20, Expansions 2039, Generated 5915
+Segment results: Runtime 113.00 ms, Solutions 20, Expansions 2039, Generated 5915
 Total Results:
-Runtime: 284.73 ms
+Runtime: 336.00 ms
 Total Expansions: 4573
 Total Generated: 12153
 Total Solutions: 37
+Nodos utilizados guardados en NodosUtilizados.txt
 Instancia 1
 Instancia 2
 Instancia 3

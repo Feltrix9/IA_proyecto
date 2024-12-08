@@ -19,6 +19,12 @@
 struct gnode;
 typedef struct gnode gnode;
 
+typedef struct {
+    int id;         // ID del nodo
+    int coordX;     // Coordenada X
+    int coordY;     // Coordenada Y
+} Nodo;
+
 struct gnode // stores info needed for each graph node
 {
   long long int id;
@@ -47,6 +53,10 @@ struct snode // BOA*'s search nodes
   snode *searchtree;
 };
 
+
+// Variables globales
+Nodo *nodosUtilizados = NULL;  // Arreglo dinámico para guardar nodos utilizados
+int totalNodosUtilizados = 0; // Contador de nodos utilizados
 
 gnode* graph_node;
 unsigned num_gnodes;
@@ -362,9 +372,12 @@ snode* new_node() {
 }
 
 int boastar() {
-	FILE* f;
-	f = fopen("NodosUtilizados.txt", "a");
-	
+    FILE* f = fopen("NodosUtilizados.txt", "a");
+    if (f == NULL) {
+        perror("Error al abrir el archivo para guardar los nodos utilizados");
+        exit(1);
+    }
+
     snode* recycled_nodes[MAX_RECYCLE];
     int next_recycled = 0;
     nsolutions = 0;
@@ -382,7 +395,7 @@ int boastar() {
 
     stat_expansions = 0;
     while (topheap() != NULL) {
-        snode* n = popheap(); //best node in open
+        snode* n = popheap(); // Best node in open
         short d;
 
         if (n->g2 >= graph_node[n->state].gmin || n->g2 + graph_node[n->state].h2 >= minf_solution) {
@@ -395,17 +408,18 @@ int boastar() {
 
         graph_node[n->state].gmin = n->g2;
 
+        // Guardar el nodo expandido
+        fprintf(f, "Nodo expandido: %d (g1: %d, g2: %d)\n", n->state, n->g1, n->g2);
 
         if (n->state == goal) {
-            printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n", n->g1, n->g2, nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
-            fprintf(f,"%d;%d\n",n->g1, n->g2); 
-			//getchar();
-            
-			solutions[nsolutions][0] = n->g1;
+            printf("GOAL [%d,%d] nsolutions:%d expanded:%llu generated:%llu heapsize:%d pruned:%d\n",
+                   n->g1, n->g2, nsolutions, stat_expansions, stat_generated, sizeheap(), stat_pruned);
+            solutions[nsolutions][0] = n->g1;
             solutions[nsolutions][1] = n->g2;
             nsolutions++;
             if (nsolutions > MAX_SOLUTIONS) {
                 printf("Maximum number of solutions reached, increase MAX_SOLUTIONS!\n");
+                fclose(f);
                 exit(1);
             }
             if (minf_solution > n->g2)
@@ -430,18 +444,12 @@ int boastar() {
             if (newg2 >= graph_node[nsucc].gmin || newg2 + h2 >= minf_solution)
                 continue;
 
-			//if (nsucc == 153532-1 || nsucc == 108746-1)	
-				//printf("No se poda %d in %d expasion (%d,%d)\n",nsucc+1,stat_expansions,newg1+h1,newg2+h2);
-
-
-
             newk1 = newg1 + h1;
             newk2 = newg2 + h2;
 
-            if (next_recycled > 0) { //to reuse pruned nodes in memory
+            if (next_recycled > 0) { // To reuse pruned nodes in memory
                 succ = recycled_nodes[--next_recycled];
-            }
-            else {
+            } else {
                 succ = new_node();
                 ++stat_created;
             }
@@ -458,8 +466,12 @@ int boastar() {
         }
     }
 
-   // return nsolutions > 0;
+    fclose(f);
+    return nsolutions > 0;
 }
+
+
+
 
 /* ------------------------------------------------------------------------------*/
 void call_boastar() {
@@ -551,38 +563,52 @@ void execute_with_stops(const int stops[], int num_stops) {
 }
 
 /*----------------------------------------------------------------------------------*/
-void pareto_search(snode* start, snode* goal) {
-  emptyheap();
-  start->cost = 0;
-  start->stops = 0;
-  start->prev = NULL;
-  insertheap(start);
 
-  while (heapsize > 0) {
-    snode* current = popheap();
-    if (current == goal) {
-      // Ruta encontrada
-      return;
+// Implementación para guardar nodos utilizados
+void guardarNodosUtilizados(const char *nombreArchivo) {
+    FILE *archivo = fopen(nombreArchivo, "a");
+    if (archivo == NULL) {
+        perror("Error al abrir el archivo de salida");
+        exit(EXIT_FAILURE);
     }
 
-    // Explorar vecinos
-    for (int d = 1; d < adjacent_table[current->state][0] * 3; d += 3) {
-      snode* neighbor = new_node();
-      neighbor->state = adjacent_table[current->state][d];
-      int new_cost = current->cost + adjacent_table[current->state][d + 1];
-      int new_stops = current->stops + 1;
-
-      if (new_cost < neighbor->cost || new_stops < neighbor->stops) {
-        neighbor->cost = new_cost;
-        neighbor->stops = new_stops;
-        neighbor->prev = current;
-        insertheap(neighbor);
-      }
+    for (int i = 0; i < totalNodosUtilizados; i++) {
+        fprintf(archivo, "%d %d %d\n", nodosUtilizados[i].id, nodosUtilizados[i].coordX, nodosUtilizados[i].coordY);
     }
-  }
+
+    fclose(archivo);
+    printf("Nodos utilizados guardados en %s\n", nombreArchivo);
 }
 
-int main(int argc, char* argv[]) {
+// Simulación de la función que copia un nodo
+void copiarNodo(int idNodo, Nodo *destino) {
+    // Aquí se llenaría el nodo `destino` con los datos reales desde el grafo.
+    // Simulamos con datos ficticios:
+    destino->id = idNodo;
+    destino->coordX = idNodo * 10;  // Supongamos coordenada X
+    destino->coordY = idNodo * 20;  // Supongamos coordenada Y
+}
+
+// Agregar un nodo a la lista de nodos utilizados
+void agregarNodoUtilizado(int idNodo) {
+    if (totalNodosUtilizados >= 1000) {
+        // Redimensionar dinámicamente si es necesario
+        nodosUtilizados = realloc(nodosUtilizados, (totalNodosUtilizados + 500) * sizeof(Nodo));
+        if (nodosUtilizados == NULL) {
+            perror("Error al redimensionar el array de nodos utilizados");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    copiarNodo(idNodo, &nodosUtilizados[totalNodosUtilizados]);
+    totalNodosUtilizados++;
+}
+
+// Implementación simulada de `execute_with_stops`
+
+
+
+int main(int argc, char *argv[]) {
     // Verificar que se han pasado suficientes argumentos
     if (argc < 2) {
         printf("Se necesitan al menos un argumento para las paradas.\n");
@@ -590,22 +616,36 @@ int main(int argc, char* argv[]) {
     }
 
     // Convertir los argumentos a enteros y guardarlos en un array
-    int num_stops = argc - 1;  // El número de paradas es argc - 1 porque el primer argumento es el nombre del programa
+    int num_stops = argc - 1;
     int stops[num_stops];
 
     for (int i = 1; i < argc; i++) {
-        stops[i - 1] = atoi(argv[i]);  // Convertir los argumentos a enteros y almacenarlos
+        stops[i - 1] = atoi(argv[i]);
     }
 
     // Leer el grafo desde el archivo
     read_adjacent_table("NY-road-d.txt");
     new_graph();
-	
+
+    // Reservar memoria inicial para nodos utilizados
+    nodosUtilizados = malloc(1000 * sizeof(Nodo));  // Tamaño inicial arbitrario
+    if (nodosUtilizados == NULL) {
+        perror("Error al reservar memoria para nodos utilizados");
+        return 1;
+    }
+
     // Ejecutar BOA* para cada segmento entre paradas
     execute_with_stops(stops, num_stops);
 
+    // Guardar nodos utilizados en un archivo
+    guardarNodosUtilizados("NodosUtilizados.txt");
+
+    // Liberar memoria
+    free(nodosUtilizados);
+
     return 0;
 }
+
 /*
 int main(int argc, char* argv[]) {
     const int stops[] = {638,25783,25006,90568};  // Lista de paradas
